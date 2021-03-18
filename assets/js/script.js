@@ -519,7 +519,9 @@ $(function() {
     if($(".countdown").length>0) {
 
         function getTimeRemaining(endtime) {
+            var delta_time = 28*60*60 *1000; //  28 часов которые нужно вычесть
             var t = Date.parse(endtime) - Date.parse(new Date());
+            t -= delta_time;
             var seconds = Math.floor((t / 1000) % 60);
             var minutes = Math.floor((t / 1000 / 60) % 60);
             var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
