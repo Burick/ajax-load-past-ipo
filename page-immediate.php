@@ -54,11 +54,15 @@ Template Name: Шаблон для ближайших IPO
 
             $category[] = 'Communication Services';
 
+            $timer_data = [];
             foreach ($get_ipo as $value) {
 
               $skuCode = $value->ticker;
+              $timer_data[$skuCode] = $value->ipo_date;
+
               $selectProducts = $wpdb->get_results("SELECT * FROM `wp_postmeta` WHERE `meta_key` = 'tiker' AND `meta_value` = '$skuCode'");
             ?>
+                
             <div class="ip-item">
               <div class="block">
                 <div class="icon"><img src="https://static-dev-ff4708e.s3.eu-north-1.amazonaws.com/logos/<?php echo $value->ticker;  ?>_logo.jpg" alt=""></div>
@@ -82,9 +86,10 @@ Template Name: Шаблон для ближайших IPO
                 </div>
                 <div class="bottom">
                   <div class="bott-props">
-                    <div class="p-row"><span>Сфера</span><strong class="color <?php echo $category[$value->sphere]; ?>"><?php echo $category[$value->sphere]; ?></strong></div>
-                    <div class="p-row"><span>Антерайтер</span><strong>Goldman</strong></div>
+                    <div class="p-row"><span>Сфера</span><strong class="blue"><?php echo $category[$value->sphere]; ?></strong></div>
+                    <div class="p-row"><span>Андерайдер</span><strong>Goldman</strong></div>
                     <div class="p-row"><span>Рейтинг от IPO.one:</span><strong>
+
                       
                       <?php
 
@@ -136,7 +141,7 @@ Template Name: Шаблон для ближайших IPO
                   <div class="b-timer">
                     <div class="timer-title">До окончания приема заявок</div>
                     <div class="timer">
-                      <div id="countdown1" class="countdown">
+                      <div id="countdown-<?php echo $value->ticker; ?>" class="countdown">
                         <div class="countdown-number">
                           <span data="<?php echo $ex_date[0]; ?>" class="days countdown-time"></span>
                           <span class="countdown-text">Дня</span>
@@ -163,6 +168,8 @@ Template Name: Шаблон для ближайших IPO
 
 <?php
   }
+              $timer_data = json_encode($timer_data);
+              echo "<script>var timer_data = $timer_data</script>";
 
 ?>
 

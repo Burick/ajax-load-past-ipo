@@ -557,11 +557,22 @@ $(function() {
             var timeinterval = setInterval(updateClock, 1000);
         }
 
-        var deadline = "December 30 2020 00:00:00 GMT+0300";
+        // var deadline = "December 30 2020 00:00:00 GMT+0300";
+        // 2021-03-21T00:00:00Z
         // var deadline = new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000); // for endless timer
-        initializeClock('countdown1', deadline);
-        initializeClock('countdown2', deadline);
-        initializeClock('countdown3', deadline);
+            // var deadline = "2021-03-18T18:18:00Z";
+        //initializeClock('countdown-1', deadline);
+        //initializeClock('countdown-2', deadline);
+       // initializeClock('countdown-3', deadline);
+
+        if(typeof timer_data != 'undefined'){
+            Object.entries(timer_data).forEach(([tiker, endtime]) => {
+                console.log(tiker , endtime); // key ,value
+                initializeClock('countdown-' + tiker, endtime);
+            });
+        }
+
+
     }
 });
 
