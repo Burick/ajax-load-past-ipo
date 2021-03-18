@@ -108,6 +108,8 @@ Template Name: Шаблон для прошедших IPO
             foreach ($get_ipo as $value) {
             //	print_r($value);
             //  exit();
+            	$skuCode = $value->ticker;
+              $selectProducts = $wpdb->get_results("SELECT * FROM `wp_postmeta` WHERE `meta_key` = 'tiker' AND `meta_value` = '$skuCode'");
               ?>
                 <div class="deal-item">
                   <div class="block">
@@ -130,15 +132,15 @@ Template Name: Шаблон для прошедших IPO
                       </div>
                       <div class="b-row">
                         <div class="col1">Тикер</div>
-                        <div class="col2"><a href="#">-</a></div>
+                        <div class="col2"><a href="<?php echo get_post_permalink( $selectProducts[0]->post_id ); ?>"><?php echo $value->ticker; ?></a></div>
                       </div>
                       <div class="b-row">
                         <div class="col1">Cфера</div>
-                        <div class="col2"><strong class="color"></strong></div>
+                        <div class="col2"><strong class="color"><?php echo $category[$value->sphere]; ?></strong></div>
                       </div>
                       <div class="b-row">
                         <div class="col1">Первый торговый день</div>
-                        <div class="col2"></div>
+                        <div class="col2">$<?php echo $value->price_first_day; ?></div>
                       </div>
                       <div class="b-row sel">
                         <div class="col1">Прибыль на дату окончания Lock Up периода</div>
