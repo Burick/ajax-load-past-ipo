@@ -71,163 +71,16 @@ get_header();
         <div class="ipos-right">
           <div class="ipos-right-scroll">
             <div class="ipos-right-scroll__content">
-          <?php
-            global $wpdb;
 
-
-            $get_ipo = $wpdb->get_results("SELECT * FROM `budipo` LIMIT 3");
-         //   echo '<pre>';
-
-               $category = array('-');
-
-            $category[] = 'Consumer Staples';
-
-            $category[] = 'Health Care';
-
-            $category[] = 'Consumer Discretionary';
-
-            $category[] = 'Technology';
-
-            $category[] = 'Materials';
-
-            $category[] = 'Real Estate';
-
-            $category[] = 'Financials';
-
-            $category[] = 'Industrials';
-
-            $category[] = 'Energy';
-
-            $category[] = 'Utilities';
-
-            $category[] = 'Communication Services';
+            <? get_template_part( 'template-parts/immediate-item' ) ?>
             
-            foreach ($get_ipo as $value) {
-
-            
-            ?>
-            <div class="ip-item">
-              <div class="block">
-                <div class="icon"><img src="https://static-dev-ff4708e.s3.eu-north-1.amazonaws.com/logos/<?php echo $value->ticker;  ?>_logo.jpg" alt=""></div>
-                <?php echo $value->company_name; ?>
-                <div class="title"><?php echo $value->stock; ?>:<?php echo $value->ticker; ?></div>
-                <div class="text"><?php echo $value->lan_eng; ?></div>
-                <div class="props">
-                  <div class="p-row"><span>Deal size</span><strong>35.00 $</strong></div>
-                  <div class="p-row"><span>Диапазон цены</span><strong><?php echo $value->offering_range_min; ?>-<?php echo $value->offering_range_max; ?> $</strong></div>
-
-                  <?php
-                  $ex_date = explode('T',$value->ipo_date);
-
-                  $x = explode('-',$ex_date[0]);
-
-                  ?>
-                  <div class="p-row"><span>Планируемая дата IPO:</span><strong><?php  echo $x[2].'-'.$x[1].'-'.$x[0]; ?></strong></div>
-                </div>
-                <div class="bottom">
-                  <div class="bott-props">
-                    <div class="p-row"><span>Сфера</span><strong class="blue"><?php echo $category[$value->sphere]; ?></strong></div>
-                    <div class="p-row"><span>Андерайдер</span><strong>Goldman</strong></div>
-                    <div class="p-row"><span>Рейтинг от IPO.one:</span><strong>
-
-                      
-                      <?php
-
-                      if($value->rating == 0){
-
-                        ?>
-
-                        <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star2.png" alt="">
-                        <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star2.png" alt="">
-                        <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star2.png" alt="">
-                        <?php
-
-                      }elseif($value->rating ==1){
-
-                        ?>
-                        <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star1.png" alt="">
-                        <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star2.png" alt="">
-                        <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star2.png" alt="">
-
-                        <?php
-
-                      }elseif($value->rating ==2){
-
-                        ?>
-                        <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star1.png" alt="">
-                        <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star1.png" alt="">
-                        <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star2.png" alt="">
-
-                        <?php
-
-                      }elseif($value->rating ==3){
-
-                        ?>
-                        <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star1.png" alt="">
-                        <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star1.png" alt="">
-                        <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star1.png" alt="">
-
-                        <?php
-
-                      }
-
-                      ?>
-
-                      </strong>
-                    </div>
-                  </div>
-                  <div class="b-btn"><a href="#" class="btn btn-add">Подать заявку</a></div>
-                  <div class="b-timer">
-                    <div class="timer-title">До окончания приема заявок</div>
-                    <div class="timer">
-                      <div id="countdown1" class="countdown">
-                        <div class="countdown-number">
-                          <span class="days countdown-time"></span>
-                          <span class="countdown-text">Дня</span>
-                        </div>
-                        <div class="countdown-number">
-                          <span class="hours countdown-time"></span>
-                          <span class="countdown-text">Часы</span>
-                        </div>
-                        <div class="countdown-number">
-                          <span class="minutes countdown-time"></span>
-                          <span class="countdown-text">Минут</span>
-                        </div>
-                        <div class="countdown-number">
-                          <span class="seconds countdown-time"></span>
-                          <span class="countdown-text">Секунд</span>
-                        </div>
-                      </div>
-                    </div><!--end countdown -->
-                  </div><!--end b-timer -->
-                </div><!--end bottom -->
-              </div><!--end block -->
-            </div><!--end ip-item -->
-<?php
-  }
-
-?>
             </div><!--end ipos-right-scroll__content -->
           </div><!--end ipos-right-scroll -->
         </div><!--end ipos-right -->
       </aside>
     </div><!--end content-wrapper -->
   </div><!--end wrapper -->
-  <div class="lvl12 inside-footer">
-    <div class="wrapper">
-      <div class="foot-just">
-        <div class="b-text">Хотите получать свежие новости и аналитику?</div>
-        <div class="b-form">
-          <div class="form">
-            <div class="b-pole"><input class="pole" type="text" placeholder=" " id="form-email"><label for="form-email">Введите свой e-mail</label></div>
-            <div class="b-btn"><input class="btn btn-white" type="submit" value="Хочу!"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="dqq bdq12-3 t7"></div>
-    <div class="dqq bdq12-4 t5"></div>
-  </div><!--end lvl -->
+  <? get_template_part( 'template-parts/subscribe-news-all' ) ?>
 
 <?php
 

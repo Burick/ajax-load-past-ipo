@@ -39,7 +39,7 @@ get_header();
                 <li class="blue-check">
                   <span class="card-step">
                     <span class="icon"></span>
-                    <span class="title">filed</span>
+                    <span class="title">Filed</span>
                     <span class="date"><?php
                     $e = explode('T',$get_com->filled_date);
 
@@ -120,7 +120,7 @@ get_header();
           <div class="b-col card-info__col">
             <div class="card-info">
               <div class="card-info__row">
-                <div class="col1">1-ый день</div>
+                <div class="col1">Текущая цена</div>
                 <div class="col2"><span class="blue"><?php
                 if($get_com->ipo->price_first_day){
                 	 echo $get_com->ipo->price_first_day.' %';
@@ -134,7 +134,7 @@ get_header();
                  ?></span></div>
               </div><!--end card-info__row -->
               <div class="card-info__row">
-                <div class="col1">Last price</div>
+                <div class="col1">Доходность за 1 день торгов</div>
                 <div class="col2"><?php
                 if($get_com->ipo->price_last_day){
                 	echo $get_com->ipo->price_last_day.' $';
@@ -144,7 +144,7 @@ get_header();
                  ?></div>
               </div><!--end card-info__row -->
               <div class="card-info__row">
-                <div class="col1">Цена IPO</div>
+                <div class="col1">Доходность по итогам Lock up периодна</div>
                 <div class="col2"><?php
                  if($get_com->ipo->price_lockup){
                  	 echo $get_com->ipo->price_lockup.' %';
@@ -238,7 +238,7 @@ get_header();
                    echo $exdate[0]; ?></div>
                 </div>
                 <div class="b-row">
-                  <div class="col1">IPO</div>
+                  <div class="col1">IPO Price ($)</div>
                   <div class="col2"><?php
                   echo $get_com->ipo->price;
                    ?></div>

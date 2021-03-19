@@ -764,7 +764,8 @@ h2 {font-size: 36px;font-weight: 400;padding: 0 0 48px;margin: 0;font-family: 'O
 .ip-item .block .bottom .color.Energy {color: #FFC10E;}
 .ip-item .block .bottom .color.Utilities {color: #8075FF;}
 .ip-item .block .bottom .color.Communication.Services {color: #AEFF5E;}
-.ip-item .block .bottom .color
+
+
 
 .ip-item .block .bottom .green {color:#16BB02;}
 .ip-item .block .bottom .purple {color:#AD00FF;}
@@ -806,6 +807,22 @@ h2 {font-size: 36px;font-weight: 400;padding: 0 0 48px;margin: 0;font-family: 'O
 .deal-item .block .b-row.sel .col2 {color: #14C7FF; font-size: 24px;}
 .deal-item .block .col1 {flex: 1 1 auto; max-width: calc(100% - 110px);}
 .deal-item .block .col2 {min-width: 70px; text-align: right;font-family: 'Oswald', sans-serif; font-size: 18px;font-weight: 400;}
+
+.deal-item .block .col2 a {text-decoration: underline;}
+
+.deal-item .block .col2 .color {color: #1357DD;font-weight: 400;}
+.deal-item .block .col2 .color.Financials {color: #16BB02;font-weight: 400;}
+.deal-item .block .col2 .color.Technology {color: #1357DD;font-weight: 400;}
+.deal-item .block .col2 .color.Materials {color: #BA3863;font-weight: 400;}
+.deal-item .block .col2 .color.Consumer.Staples {color: #FF8E00;font-weight: 400;}
+.deal-item .block .col2 .color.Health.Care {color: #00E3B6;font-weight: 400;}
+.deal-item .block .col2 .color.Consumer.Discretionary {color: #AD00FF;font-weight: 400;}
+.deal-item .block .col2 .color.Real.Estate {color: #C2B5FF;font-weight: 400;}
+.deal-item .block .col2 .color.Industrials {color: #F7B2AD;font-weight: 400;}
+.deal-item .block .col2 .color.Energy {color: #FFC10E;font-weight: 400;}
+.deal-item .block .col2 .color.Utilities {color: #8075FF;font-weight: 400;}
+.deal-item .block .col2 .color.Communication.Services {color: #AEFF5E;font-weight: 400;}
+
 .deal-item__bottom {width: 100%;}
 .deal-item__bottom .news-item__date {padding-left: 0;border:none; display: inline-block; vertical-align: top;}
 .deal-item__bottom .news-item__tag {

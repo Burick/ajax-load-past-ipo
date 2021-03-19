@@ -136,11 +136,20 @@ Template Name: Шаблон для прошедших IPO
                       </div>
                       <div class="b-row">
                         <div class="col1">Cфера</div>
-                        <div class="col2"><strong class="color"><?php echo $category[$value->sphere]; ?></strong></div>
+                        <div class="col2"><strong class="color <?php echo $category[$value->sphere]; ?>"><?php echo $category[$value->sphere]; ?></strong></div>
                       </div>
                       <div class="b-row">
                         <div class="col1">Первый торговый день</div>
-                        <div class="col2">$<?php echo $value->price_first_day; ?></div>
+                        <div class="col2"><?php
+
+                        //echo $value->ipo_date;
+                        $x= explode('T',$value->ipo_date);
+
+                        $x = explode('-',$x[0]);
+
+                          echo $x[2].'-'.$x[1].'-'.$x[0];
+
+                        ?></div>
                       </div>
                       <div class="b-row sel">
                         <div class="col1">Прибыль на дату окончания Lock Up периода</div>

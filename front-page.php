@@ -128,12 +128,15 @@
 
             $category[] = 'Communication Services';
           	
+            $timer_data = [];
           	foreach ($get_ipo as $value) {
 
+              $skuCode = $value->ticker;
+              $timer_data[$skuCode] = $value->ipo_date;
 
-          		$skuCode = $value->ticker;
           		$selectProducts = $wpdb->get_results("SELECT * FROM `wp_postmeta` WHERE `meta_key` = 'tiker' AND `meta_value` = '$skuCode'");
           	?>
+            
             <div class="ip-item">
               <div class="block">
                 <div class="icon"><img src="https://static-dev-ff4708e.s3.eu-north-1.amazonaws.com/logos/<?php echo $value->ticker;  ?>_logo.jpg" alt=""></div>
@@ -160,7 +163,7 @@
                 <div class="bottom">
                   <div class="bott-props">
                     <div class="p-row"><span>Сфера</span><strong class="color <?php echo $category[$value->sphere]; ?>"><?php echo $category[$value->sphere]; ?></strong></div>
-                    <div class="p-row"><span>Андерайдер</span><strong>Goldman</strong></div>
+                    <div class="p-row"><span>Антерайтер</span><strong>Goldman</strong></div>
                     <div class="p-row"><span>Рейтинг от IPO.one:</span><strong>
 
                     	
@@ -210,11 +213,11 @@
                     	</strong>
                     </div>
                   </div>
-                  <div class="b-btn"><a href="http://my.ipo.one/" class="btn btn-add">Подать заявку</a></div>
+                  <div class="b-btn"><a href="https://my.ipo.one/" class="btn btn-add">Подать заявку</a></div>
                   <div class="b-timer">
                     <div class="timer-title">До окончания приема заявок</div>
                     <div class="timer">
-                      <div id="countdown1" class="countdown">
+                      <div id="countdown-<?php echo $value->ticker; ?>" class="countdown">
                         <div class="countdown-number">
                           <span data="<?php echo $ex_date[0]; ?>" class="days countdown-time"></span>
                           <span class="countdown-text">Дня</span>
@@ -241,7 +244,8 @@
 
 <?php
 	}
-
+            $timer_data = json_encode($timer_data);
+            echo "<script>var timer_data = $timer_data</script>";
 ?>
             </div><!--end ipos-scroll-cont -->
           </div><!--end ipos-scroll -->
@@ -250,7 +254,7 @@
           <div class="dqq t6"></div>
           <div class="dqq t4"></div>
         </div>
-      <div class="b-etc"><a href="#" class="btn">Еще</a></div>
+      <div class="b-etc"><a href="/blizhajshee-ipo/" class="btn">Смотреть все</a></div>
     </div>
     <div class="lvl-bg">
       <div class="bdq dq4"><div class="dqq t3"></div><div class="dqq t5"></div></div>
