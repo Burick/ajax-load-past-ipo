@@ -108,6 +108,9 @@
 </div><!--end popup -->
 
 <?php wp_footer(); ?>
+<?php
+  if ( is_singular('company') ) {
+?>
 <script src="https://unpkg.com/lightweight-charts@3.2.0/dist/lightweight-charts.standalone.production.js"></script>
 <script>
 $(function() {
@@ -236,7 +239,7 @@ foreach($get_coms as $value){
 
         toolTip.style.display = 'block';
         var price = param.seriesPrices.get(series);
-        toolTip.innerHTML = '<div style="color: rgba(0, 120, 255, 0.9)">⬤ AERO</div>' +
+        toolTip.innerHTML = '<div style="color: rgba(0, 120, 255, 0.9)">⬤ <?php echo $get_tikers; ?></div>' +
             '<div style="font-size: 24px; margin: 4px 0px; color: #20262E">' + (Math.round(price * 100) / 100).toFixed(2) + '</div>' +
             '<div>' + dateStr + '</div>';
 
@@ -254,5 +257,10 @@ foreach($get_coms as $value){
     });
 });
 </script>
+<?php
+  } else {
+   echo 'Другое';
+  }
+?>
 </body>
 </html>
