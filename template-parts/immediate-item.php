@@ -32,10 +32,18 @@
             $timer_data = [];
             foreach ($get_ipo as $value) {
 
-              $skuCode = $value->ticker;
-              $timer_data[$skuCode] = $value->ipo_date;
+                $skuCode = $value->ticker;
+                $ipo_date = $value->ipo_date;
+/* правильно было бы не выводить вообще просроченные таймера и задержку $delta указывать в настройках */
+//                $delta = 28*60*60;
+//                $ipo_date_timestamp = strtotime($ipo_date) - $delta;
+//                $current_timestamp = time();
+//                if ($current_timestamp > $ipo_date_timestamp){
+//                    continue;
+//                }
+                $timer_data[$skuCode] = $ipo_date;
 
-              $selectProducts = $wpdb->get_results("SELECT * FROM `wp_postmeta` WHERE `meta_key` = 'tiker' AND `meta_value` = '$skuCode'");
+                $selectProducts = $wpdb->get_results("SELECT * FROM `wp_postmeta` WHERE `meta_key` = 'tiker' AND `meta_value` = '$skuCode'");
             ?>
                 
             <div class="ip-item">

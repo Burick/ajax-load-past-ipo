@@ -552,6 +552,7 @@ $(function() {
 
                 if (t.total <= 0) {
                     clearInterval(timeinterval);
+                    $(clock).closest('.ip-item').remove();
                 }
             }
 
