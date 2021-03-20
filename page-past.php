@@ -4,6 +4,8 @@ Template Name: Шаблон для прошедших IPO
 */
 
     get_header();
+
+    $lang = 'eng';
 ?>
 
 <div class="wrapper">
@@ -81,7 +83,9 @@ Template Name: Шаблон для прошедших IPO
             $get_ipo = $wpdb->get_results("SELECT * FROM `pastipo`");
           //  echo '<pre>';
 
-               $category = array();
+            if('ru' == $lang){
+
+            $category = array('-');
 
             $category[] = 'Consumer Staples';
 
@@ -104,6 +108,34 @@ Template Name: Шаблон для прошедших IPO
             $category[] = 'Utilities';
 
             $category[] = 'Communication Services';
+
+            }else{
+
+                          $category = array('-');
+
+            $category[] = 'Товары массового потребления';
+
+            $category[] = 'Здравоохранение';
+
+            $category[] = 'Потребительский сектор';
+
+            $category[] = 'Высокие технологии';
+
+            $category[] = 'Сырьевой сектор';
+
+            $category[] = 'Недвижимость';
+
+            $category[] = 'Финансы';
+
+            $category[] = 'Промышленность';
+
+            $category[] = 'Энергетика';
+
+            $category[] = 'Инфраструктура';
+
+            $category[] = 'Communication Services';
+
+            }
             
             foreach ($get_ipo as $value) {
             //	print_r($value);
@@ -136,7 +168,7 @@ Template Name: Шаблон для прошедших IPO
                       </div>
                       <div class="b-row">
                         <div class="col1">Cфера</div>
-                        <div class="col2"><strong class="color <?php echo $category[$value->sphere]; ?>"><?php echo $category[$value->sphere]; ?></strong></div>
+                        <div class="col2"><strong class="color_<?php echo $value->sphere; ?>"><?php echo $category[$value->sphere]; ?></strong></div>
                       </div>
                       <div class="b-row">
                         <div class="col1">Первый торговый день</div>
