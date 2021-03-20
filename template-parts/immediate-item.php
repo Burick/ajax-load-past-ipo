@@ -1,9 +1,11 @@
 <?php
             global $wpdb;
-
+            $lang = 'eng';
 
             $get_ipo = $wpdb->get_results("SELECT * FROM `budipo`");
           //  echo '<pre>';
+
+            if('ru' == $lang){
 
             $category = array('-');
 
@@ -28,6 +30,34 @@
             $category[] = 'Utilities';
 
             $category[] = 'Communication Services';
+
+            }else{
+
+                          $category = array('-');
+
+            $category[] = 'Товары массового потребления';
+
+            $category[] = 'Здравоохранение';
+
+            $category[] = 'Потребительский сектор';
+
+            $category[] = 'Высокие технологии';
+
+            $category[] = 'Сырьевой сектор';
+
+            $category[] = 'Недвижимость';
+
+            $category[] = 'Финансы';
+
+            $category[] = 'Промышленность';
+
+            $category[] = 'Энергетика';
+
+            $category[] = 'Инфраструктура';
+
+            $category[] = 'Communication Services';
+
+            }
 
             $timer_data = [];
             foreach ($get_ipo as $value) {
@@ -69,7 +99,7 @@
                 </div>
                 <div class="bottom">
                   <div class="bott-props">
-                    <div class="p-row"><span>Сфера</span><strong class="color <?php echo $category[$value->sphere]; ?>"><?php echo $category[$value->sphere]; ?></strong></div>
+                    <div class="p-row"><span>Сфера</span><strong class="color_<?php echo $value->sphere; ?>"><?php echo $category[$value->sphere]; ?></strong></div>
                     <div class="p-row"><span>Антерайтер</span><strong>Goldman</strong></div>
                     <div class="p-row"><span>Рейтинг от IPO.one:</span><strong>
 

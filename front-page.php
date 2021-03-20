@@ -162,7 +162,7 @@
                 </div>
                 <div class="bottom">
                   <div class="bott-props">
-                    <div class="p-row"><span>Сфера</span><strong class="color <?php echo $category[$value->sphere]; ?>"><?php echo $category[$value->sphere]; ?></strong></div>
+                    <div class="p-row"><span>Сфера</span><strong class="color_<?php echo $value->sphere; ?>"><?php echo $category[$value->sphere]; ?></strong></div>
                     <div class="p-row"><span>Антерайтер</span><strong>Goldman</strong></div>
                     <div class="p-row"><span>Рейтинг от IPO.one:</span><strong>
 

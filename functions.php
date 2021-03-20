@@ -403,9 +403,10 @@ function obi_register_types(){
         'menu_position'       => 12,
         'menu_icon'           => 'dashicons-format-aside', 
 		'hierarchical'        => false,
-		'taxonomies'		  => array( 'studys_cat' ),
+		'taxonomies'		  => array( 'company_cat' ),
         'supports'            => ['title', 'editor', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'page-attributes', 'post-formats'],
-        'has_archive' => true
+        'has_archive' => false
+        
 	]);
 	register_taxonomy('company_cat', ['company'], [
         'labels'                => [
@@ -426,7 +427,7 @@ function obi_register_types(){
     ]);
 
 }
- 
+
 
 
 

@@ -42,8 +42,8 @@ get_header();
                     <span class="title">Filed</span>
                     <span class="date"><?php
                     $e = explode('T',$get_com->filled_date);
-
-                     echo $e[0];
+                    $x = explode('-',$e[0]);
+                     echo $x[2].'-'.$x[1].'-'.$x[0];
 
 
                       ?></span>
@@ -65,9 +65,9 @@ get_header();
                     <span class="title">Set Terms</span>
                     <span class="date"><?php
                     $e1 = explode('T',$get_com->ipo->set_terms_date);
-
-                     echo $e1[0];
-
+                    $x = explode('-',$e1[0]);
+                     //echo $e1[0];
+                     echo $x[2].'-'.$x[1].'-'.$x[0];
 
                       ?></span>
                   </span>
@@ -87,8 +87,8 @@ get_header();
                     <span class="date"><?php
                     $e2 = explode('T',$get_com->ipo->ipo_date);
 
-                     echo $e2[0];
-
+                     $x = explode('-',$e2[0]);
+                     echo $x[2].'-'.$x[1].'-'.$x[0];
 
                       ?></span>
                   </span>
@@ -106,8 +106,8 @@ get_header();
                     <span class="title">Lock Up</span>
                     <span class="date"><?php
                     $e3 = explode('T',$get_com->ipo->lockup_date);
-
-                     echo $e3[0];
+                    	$x = explode('-',$e3[0]);
+                    echo $x[2].'-'.$x[1].'-'.$x[0];
 
 
                       ?></span>
@@ -235,7 +235,10 @@ get_header();
                   <div class="col2"><?php
 
                     $exdate = explode('T',$get_com->ipo->lockup_date);
-                   echo $exdate[0]; ?></div>
+                    $x = explode('-',$exdate[0]);
+                    echo $x[2].'-'.$x[1].'-'.$x[0];
+
+                   //echo $exdate[0]; ?></div>
                 </div>
                 <div class="b-row">
                   <div class="col1">IPO Price ($)</div>
@@ -247,7 +250,9 @@ get_header();
                   <div class="col1">IPO Date</div>
                   <div class="col2"><?php
                    $ipo_date = explode('T', $get_com->ipo->ipo_date);
-                   echo $ipo_date[0]; ?></div>
+                   $x = explode('-',$ipo_date[0]);
+                    echo $x[2].'-'.$x[1].'-'.$x[0];
+                  // echo $ipo_date[0]; ?></div>
                 </div>
                 <div class="b-row">
                   <div class="col1">Price range</div>
