@@ -342,7 +342,7 @@ $lang = 'eng';
                             <div class="deal-table__th"></div>
                         </div><!--end deal-table__row -->
                         <?php
-                        $get_ipo = $wpdb->get_results("SELECT * FROM `pastipo`");
+                        //$get_ipo = $wpdb->get_results("SELECT * FROM `pastipo`");
 
                         foreach ($get_ipo as $value) {
                             ?>
