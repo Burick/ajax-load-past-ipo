@@ -116,92 +116,9 @@ get_header();
         <div class="ipos-right">
           <div class="ipos-right-scroll">
             <div class="ipos-right-scroll__content">
-              <div class="ip-item">
-                <div class="block">
-                  <div class="icon"><img src="<?php echo bloginfo('template_url'); ?>/assets/img/ipo-i1.png" alt=""></div>
-                  <div class="title">Nasdaq:BSY</div>
-                  <div class="text">Provides software for construction and infrastructure projects.</div>
-                  <div class="props">
-                    <div class="p-row"><span>Deal size</span><strong>35.00 $</strong></div>
-                    <div class="p-row"><span>Диапазон цены</span><strong>19-21 $</strong></div>
-                    <div class="p-row"><span>Планируемая дата IPO:</span><strong>12.08.2020</strong></div>
-                  </div>
-                  <div class="bottom">
-                    <div class="bott-props">
-                      <div class="p-row"><span>Сфера</span><strong class="blue">Technology</strong></div>
-                      <div class="p-row"><span>Андерайдер</span><strong>Goldman</strong></div>
-                      <div class="p-row"><span>Рейтинг от IPO.one:</span><strong><img src="svg/star1.svg" alt=""><img src="img/star2.png" alt=""><img src="img/star2.png" alt=""></strong></div>
-                    </div>
-                    <div class="b-btn"><a href="#" class="btn btn-add">Подать заявку</a></div>
-                    <div class="b-timer">
-                      <div class="timer-title">До окончания приема заявок</div>
-                      <div class="timer">
-                        <div id="countdown1" class="countdown">
-                          <div class="countdown-number">
-                            <span class="days countdown-time"></span>
-                            <span class="countdown-text">Дня</span>
-                          </div>
-                          <div class="countdown-number">
-                            <span class="hours countdown-time"></span>
-                            <span class="countdown-text">Часы</span>
-                          </div>
-                          <div class="countdown-number">
-                            <span class="minutes countdown-time"></span>
-                            <span class="countdown-text">Минут</span>
-                          </div>
-                          <div class="countdown-number">
-                            <span class="seconds countdown-time"></span>
-                            <span class="countdown-text">Секунд</span>
-                          </div>
-                        </div>
-                      </div><!--end countdown -->
-                    </div><!--end b-timer -->
-                  </div><!--end bottom -->
-                </div><!--end block -->
-              </div><!--end ip-item -->
-              <div class="ip-item">
-                <div class="block">
-                  <div class="icon"><img src="<?php echo bloginfo('template_url'); ?>/assets/img/ipo-i1.png" alt=""></div>
-                  <div class="title">Nasdaq:BSY</div>
-                  <div class="text">Provides software for construction and infrastructure projects.</div>
-                  <div class="props">
-                    <div class="p-row"><span>Deal size</span><strong>35.00 $</strong></div>
-                    <div class="p-row"><span>Диапазон цены</span><strong>19-21 $</strong></div>
-                    <div class="p-row"><span>Планируемая дата IPO:</span><strong>12.08.2020</strong></div>
-                  </div>
-                  <div class="bottom">
-                    <div class="bott-props">
-                      <div class="p-row"><span>Сфера</span><strong class="blue">Technology</strong></div>
-                      <div class="p-row"><span>Андерайдер</span><strong>Goldman</strong></div>
-                      <div class="p-row"><span>Рейтинг от IPO.one:</span><strong><img src="svg/star1.svg" alt=""><img src="img/star2.png" alt=""><img src="img/star2.png" alt=""></strong></div>
-                    </div>
-                    <div class="b-btn"><a href="#" class="btn btn-add">Подать заявку</a></div>
-                    <div class="b-timer">
-                      <div class="timer-title">До окончания приема заявок</div>
-                      <div class="timer">
-                        <div id="countdown1" class="countdown">
-                          <div class="countdown-number">
-                            <span class="days countdown-time"></span>
-                            <span class="countdown-text">Дня</span>
-                          </div>
-                          <div class="countdown-number">
-                            <span class="hours countdown-time"></span>
-                            <span class="countdown-text">Часы</span>
-                          </div>
-                          <div class="countdown-number">
-                            <span class="minutes countdown-time"></span>
-                            <span class="countdown-text">Минут</span>
-                          </div>
-                          <div class="countdown-number">
-                            <span class="seconds countdown-time"></span>
-                            <span class="countdown-text">Секунд</span>
-                          </div>
-                        </div>
-                      </div><!--end countdown -->
-                    </div><!--end b-timer -->
-                  </div><!--end bottom -->
-                </div><!--end block -->
-              </div><!--end ip-item -->
+
+              <? get_template_part( 'template-parts/immediate-item' ) ?>
+              
             </div><!--end ipos-right-scroll__content -->
           </div><!--end ipos-right-scroll -->
         </div><!--end ipos-right -->
