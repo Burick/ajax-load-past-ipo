@@ -56,6 +56,7 @@ if ( ! function_exists( 'ipo_setup' ) ) :
 				'menu-4' => esc_html__( 'Глоссарий рус', 'ipo' ),
 				'menu-5' => esc_html__( 'Глоссарий англ', 'ipo' ),
                 'menu-6' => esc_html__( 'Блог', 'ipo' ),
+                'menu-7' => esc_html__( 'Документы подвал', 'ipo' ),
 			)
 		);
 
@@ -164,6 +165,17 @@ function ipo_widgets_init() {
 		array(
 			'name'          => esc_html__( 'Подвал контакты', 'ipo' ),
 			'id'            => 'sidebar-4',
+			'description'   => esc_html__( 'Добавить виджеты сюда', 'ipo' ),
+			'before_widget' => '<div id="%1$s" class="b-addr widget %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h3>',
+			'after_title'   => '</h3>',
+		)
+	);
+    register_sidebar(
+		array(
+			'name'          => esc_html__( 'Подвал документы', 'ipo' ),
+			'id'            => 'sidebar-5',
 			'description'   => esc_html__( 'Добавить виджеты сюда', 'ipo' ),
 			'before_widget' => '<div id="%1$s" class="b-addr widget %2$s">',
 			'after_widget'  => '</div>',
@@ -427,7 +439,6 @@ function obi_register_types(){
     ]);
 
 }
-
 
 
 
