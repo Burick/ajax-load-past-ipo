@@ -121,17 +121,24 @@ get_header();
             <div class="card-info">
               <div class="card-info__row">
                 <div class="col1">Текущая цена</div>
-                <div class="col2"><span class="blue"><?php
-                if($get_com->ipo->price_first_day){
-                	 echo $get_com->ipo->price_first_day.' %';
-                }else{
-                	echo ' - ';
-                }
-                
-
-
-
-                 ?></span></div>
+                <div class="col2">
+                  <span class="blue">
+                  <?php
+                    if($get_com->ipo->price){
+                      echo $get_com->ipo->price.' $';
+                    }else{
+                      echo ' - ';
+                    }
+                  ?>
+                  <?php
+                    // if($get_com->ipo->price_first_day){
+                    //   echo $get_com->ipo->price_first_day.' %';
+                    // }else{
+                    //   echo ' - ';
+                    // }
+                 ?>
+                </span>
+                </div>
               </div><!--end card-info__row -->
               <div class="card-info__row">
                 <div class="col1">Доходность за 1 день торгов</div>
@@ -260,13 +267,23 @@ get_header();
                 </div>
               </div><!--end block -->
               <div class="block">
-                <div class="b-row">
+                <div class="b-col">
                   <div class="col1">Lawyers</div>
-                  <div class="col2"><?php echo $get_com->lawyers; ?></div>
+                  <div class="col2">                    <?php
+                        $lawyers_arr = explode(';', $get_com->lawyers );
+                        foreach($lawyers_arr as $lawyer){
+                            echo "<span>$lawyer</span>";
+                        }
+                    ?></div>
                 </div>
-                <div class="b-row">
+                <div class="b-col">
                   <div class="col1">Auditor</div>
-                  <div class="col2"><?php echo $get_com->auditors; ?></div>
+                  <div class="col2">                    <?php
+                        $auditors_arr = explode(';', $get_com->auditors );
+                        foreach($auditors_arr as $auditor){
+                            echo "<span>$auditor</span>";
+                        }
+                    ?></div>
                 </div>
                 <div class="b-row">
                   <div class="col1">Underwriters</div>
@@ -326,110 +343,47 @@ get_header();
 
     	}
         ?>
-        <div class="card-articles">
-          <div class="item">
-            <div class="news-item">
-              <a href="" class="news-item__label">IPOone – лауреат премии «Права потребителей и качество обслуживания»</a>
-              <a href="" class="news-item__text">Это первая инвестиция Д'Амелио в стартап, сообщает TechCrunch.</a>
+      <?php 
 
-              <div class="news-item__bottom--mobile">
-                <div class="news-item__time">
-                  <div class="ico"><svg fill="black" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 0C3.58261 0 0 3.58261 0 8C0 12.4174 3.58261 16 8 16C12.4174 16 16 12.4174 16 8C16 3.58261 12.4174 0 8 0ZM8 14.6087C4.34783 14.6087 1.3913 11.6522 1.3913 8C1.3913 4.34783 4.34783 1.3913 8 1.3913C11.6522 1.3913 14.6087 4.34783 14.6087 8C14.6087 11.6522 11.6522 14.6087 8 14.6087ZM10.6609 9.66958C10.9391 9.94784 10.9391 10.3826 10.6609 10.6609C10.5217 10.8 10.3478 10.8696 10.1739 10.8696C10 10.8696 9.82608 10.8 9.68695 10.6609L7.53044 8.50433C7.39131 8.3652 7.32173 8.19132 7.32173 8.01741V3.87827C7.32173 3.49566 7.63478 3.18262 8.01739 3.18262C8.39999 3.18262 8.71304 3.49566 8.71304 3.87827V7.73913L10.6609 9.66958Z"></path>
-                  </svg>
-                  </div>
-                  Вчера в 10:00
-                </div>
-                <a class="news-item__tag" href="">R fsd fsdsffdfsdNS</a><a class="news-item__tag" href="">R dsfsdfsdfsdfNS2</a><a class="news-item__tag" href="">RNfsd f sdfsfsdfS3</a><a class="news-item__tag" href="">RNS4</a>
-              </div><!--end news-item__bottom -->
-            </div><!--end news-item -->
-          </div><!--end item -->
-          <div class="item">
-            <div class="news-item">
-              <a href="" class="news-item__label">IPOone – лауреат премии «Права потребителей и качество обслуживания»</a>
-              <a href="" class="news-item__text">Это первая инвестиция Д'Амелио в стартап, сообщает TechCrunch.</a>
+      $posts = get_posts(array(
+        'post_type' => 'newslist',
+        'meta_key' => 'acf_dobavlenie_tikerov_0_acf_nazvanie_tikera',
+        'meta_value' => $get_com->ticker
+      ));
 
-              <div class="news-item__bottom--mobile">
-                <div class="news-item__time">
-                  <div class="ico"><svg fill="black" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 0C3.58261 0 0 3.58261 0 8C0 12.4174 3.58261 16 8 16C12.4174 16 16 12.4174 16 8C16 3.58261 12.4174 0 8 0ZM8 14.6087C4.34783 14.6087 1.3913 11.6522 1.3913 8C1.3913 4.34783 4.34783 1.3913 8 1.3913C11.6522 1.3913 14.6087 4.34783 14.6087 8C14.6087 11.6522 11.6522 14.6087 8 14.6087ZM10.6609 9.66958C10.9391 9.94784 10.9391 10.3826 10.6609 10.6609C10.5217 10.8 10.3478 10.8696 10.1739 10.8696C10 10.8696 9.82608 10.8 9.68695 10.6609L7.53044 8.50433C7.39131 8.3652 7.32173 8.19132 7.32173 8.01741V3.87827C7.32173 3.49566 7.63478 3.18262 8.01739 3.18262C8.39999 3.18262 8.71304 3.49566 8.71304 3.87827V7.73913L10.6609 9.66958Z"></path>
-                  </svg>
-                  </div>
-                  Вчера в 10:00
-                </div>
-                <a class="news-item__tag" href="">R fsd fsdsffdfsdNS</a><a class="news-item__tag" href="">R dsfsdfsdfsdfNS2</a><a class="news-item__tag" href="">RNfsd f sdfsfsdfS3</a><a class="news-item__tag" href="">RNS4</a>
-              </div><!--end news-item__bottom -->
-            </div><!--end news-item -->
-          </div><!--end item -->
-          <div class="item">
-            <div class="news-item">
-              <a href="" class="news-item__label">IPOone – лауреат премии «Права потребителей и качество обслуживания»</a>
-              <a href="" class="news-item__text">Это первая инвестиция Д'Амелио в стартап, сообщает TechCrunch.</a>
+      if( $posts ): ?>
+          
+          <div class="card-articles">
 
-              <div class="news-item__bottom--mobile">
-                <div class="news-item__time">
-                  <div class="ico"><svg fill="black" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 0C3.58261 0 0 3.58261 0 8C0 12.4174 3.58261 16 8 16C12.4174 16 16 12.4174 16 8C16 3.58261 12.4174 0 8 0ZM8 14.6087C4.34783 14.6087 1.3913 11.6522 1.3913 8C1.3913 4.34783 4.34783 1.3913 8 1.3913C11.6522 1.3913 14.6087 4.34783 14.6087 8C14.6087 11.6522 11.6522 14.6087 8 14.6087ZM10.6609 9.66958C10.9391 9.94784 10.9391 10.3826 10.6609 10.6609C10.5217 10.8 10.3478 10.8696 10.1739 10.8696C10 10.8696 9.82608 10.8 9.68695 10.6609L7.53044 8.50433C7.39131 8.3652 7.32173 8.19132 7.32173 8.01741V3.87827C7.32173 3.49566 7.63478 3.18262 8.01739 3.18262C8.39999 3.18262 8.71304 3.49566 8.71304 3.87827V7.73913L10.6609 9.66958Z"></path>
-                  </svg>
-                  </div>
-                  Вчера в 10:00
-                </div>
-                <a class="news-item__tag" href="">R fsd fsdsffdfsdNS</a><a class="news-item__tag" href="">R dsfsdfsdfsdfNS2</a><a class="news-item__tag" href="">RNfsd f sdfsfsdfS3</a><a class="news-item__tag" href="">RNS4</a>
-              </div><!--end news-item__bottom -->
-            </div><!--end news-item -->
-          </div><!--end item -->
-          <div class="item">
-            <div class="news-item">
-              <a href="" class="news-item__label">IPOone – лауреат премии «Права потребителей и качество обслуживания»</a>
-              <a href="" class="news-item__text">Это первая инвестиция Д'Амелио в стартап, сообщает TechCrunch.</a>
+          <?php foreach( $posts as $post ): 
+              
+              setup_postdata( $post );
+              
+              ?>
+              <div class="item">
+                <div class="news-item">
+                  <a href="<?php the_permalink(); ?>" class="news-item__label"><?php the_title(); ?></a>
+                  <div class="news-item__text"><?php echo get_the_excerpt(); ?></div>
 
-              <div class="news-item__bottom--mobile">
-                <div class="news-item__time">
-                  <div class="ico"><svg fill="black" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 0C3.58261 0 0 3.58261 0 8C0 12.4174 3.58261 16 8 16C12.4174 16 16 12.4174 16 8C16 3.58261 12.4174 0 8 0ZM8 14.6087C4.34783 14.6087 1.3913 11.6522 1.3913 8C1.3913 4.34783 4.34783 1.3913 8 1.3913C11.6522 1.3913 14.6087 4.34783 14.6087 8C14.6087 11.6522 11.6522 14.6087 8 14.6087ZM10.6609 9.66958C10.9391 9.94784 10.9391 10.3826 10.6609 10.6609C10.5217 10.8 10.3478 10.8696 10.1739 10.8696C10 10.8696 9.82608 10.8 9.68695 10.6609L7.53044 8.50433C7.39131 8.3652 7.32173 8.19132 7.32173 8.01741V3.87827C7.32173 3.49566 7.63478 3.18262 8.01739 3.18262C8.39999 3.18262 8.71304 3.49566 8.71304 3.87827V7.73913L10.6609 9.66958Z"></path>
-                  </svg>
-                  </div>
-                  Вчера в 10:00
-                </div>
-                <a class="news-item__tag" href="">R fsd fsdsffdfsdNS</a><a class="news-item__tag" href="">R dsfsdfsdfsdfNS2</a><a class="news-item__tag" href="">RNfsd f sdfsfsdfS3</a><a class="news-item__tag" href="">RNS4</a>
-              </div><!--end news-item__bottom -->
-            </div><!--end news-item -->
-          </div><!--end item -->
-          <div class="item">
-            <div class="news-item">
-              <a href="" class="news-item__label">IPOone – лауреат премии «Права потребителей и качество обслуживания»</a>
-              <a href="" class="news-item__text">Это первая инвестиция Д'Амелио в стартап, сообщает TechCrunch.</a>
-              <div class="news-item__bottom--mobile">
-                <div class="news-item__time">
-                  <div class="ico"><svg fill="black" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 0C3.58261 0 0 3.58261 0 8C0 12.4174 3.58261 16 8 16C12.4174 16 16 12.4174 16 8C16 3.58261 12.4174 0 8 0ZM8 14.6087C4.34783 14.6087 1.3913 11.6522 1.3913 8C1.3913 4.34783 4.34783 1.3913 8 1.3913C11.6522 1.3913 14.6087 4.34783 14.6087 8C14.6087 11.6522 11.6522 14.6087 8 14.6087ZM10.6609 9.66958C10.9391 9.94784 10.9391 10.3826 10.6609 10.6609C10.5217 10.8 10.3478 10.8696 10.1739 10.8696C10 10.8696 9.82608 10.8 9.68695 10.6609L7.53044 8.50433C7.39131 8.3652 7.32173 8.19132 7.32173 8.01741V3.87827C7.32173 3.49566 7.63478 3.18262 8.01739 3.18262C8.39999 3.18262 8.71304 3.49566 8.71304 3.87827V7.73913L10.6609 9.66958Z"></path>
-                  </svg>
-                  </div>
-                  Вчера в 10:00
-                </div>
-                <a class="news-item__tag" href="">R fsd fsdsffdfsdNS</a><a class="news-item__tag" href="">R dsfsdfsdfsdfNS2</a><a class="news-item__tag" href="">RNfsd f sdfsfsdfS3</a><a class="news-item__tag" href="">RNS4</a>
-              </div><!--end news-item__bottom -->
-            </div><!--end news-item -->
-          </div><!--end item -->
-          <div class="item">
-            <div class="news-item">
-              <a href="" class="news-item__label">IPOone – лауреат премии «Права потребителей и качество обслуживания»</a>
-              <a href="" class="news-item__text">Это первая инвестиция Д'Амелио в стартап, сообщает TechCrunch.</a>
+                  <div class="news-item__bottom--mobile">
+                    <div class="news-item__time">
+                      <div class="ico"><svg fill="black" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 0C3.58261 0 0 3.58261 0 8C0 12.4174 3.58261 16 8 16C12.4174 16 16 12.4174 16 8C16 3.58261 12.4174 0 8 0ZM8 14.6087C4.34783 14.6087 1.3913 11.6522 1.3913 8C1.3913 4.34783 4.34783 1.3913 8 1.3913C11.6522 1.3913 14.6087 4.34783 14.6087 8C14.6087 11.6522 11.6522 14.6087 8 14.6087ZM10.6609 9.66958C10.9391 9.94784 10.9391 10.3826 10.6609 10.6609C10.5217 10.8 10.3478 10.8696 10.1739 10.8696C10 10.8696 9.82608 10.8 9.68695 10.6609L7.53044 8.50433C7.39131 8.3652 7.32173 8.19132 7.32173 8.01741V3.87827C7.32173 3.49566 7.63478 3.18262 8.01739 3.18262C8.39999 3.18262 8.71304 3.49566 8.71304 3.87827V7.73913L10.6609 9.66958Z"></path>
+                      </svg>
+                      </div>
+                      <time datetime="<?php echo get_the_date( 'Y-m-d' ); ?>"><?php echo get_the_date( 'd F Y' ); ?></time>
+                    </div>
+                  </div><!--end news-item__bottom -->
+                </div><!--end news-item -->
+              </div><!--end item -->
+          
+          <?php endforeach; ?>
+          
+          </div><!--end card-articles -->
+          
+          <?php wp_reset_postdata(); ?>
 
-              <div class="news-item__bottom--mobile">
-                <div class="news-item__time">
-                  <div class="ico"><svg fill="black" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 0C3.58261 0 0 3.58261 0 8C0 12.4174 3.58261 16 8 16C12.4174 16 16 12.4174 16 8C16 3.58261 12.4174 0 8 0ZM8 14.6087C4.34783 14.6087 1.3913 11.6522 1.3913 8C1.3913 4.34783 4.34783 1.3913 8 1.3913C11.6522 1.3913 14.6087 4.34783 14.6087 8C14.6087 11.6522 11.6522 14.6087 8 14.6087ZM10.6609 9.66958C10.9391 9.94784 10.9391 10.3826 10.6609 10.6609C10.5217 10.8 10.3478 10.8696 10.1739 10.8696C10 10.8696 9.82608 10.8 9.68695 10.6609L7.53044 8.50433C7.39131 8.3652 7.32173 8.19132 7.32173 8.01741V3.87827C7.32173 3.49566 7.63478 3.18262 8.01739 3.18262C8.39999 3.18262 8.71304 3.49566 8.71304 3.87827V7.73913L10.6609 9.66958Z"></path>
-                  </svg>
-                  </div>
-                  Вчера в 10:00
-                </div>
-                <a class="news-item__tag" href="">R fsd fsdsffdfsdNS</a><a class="news-item__tag" href="">R dsfsdfsdfsdfNS2</a><a class="news-item__tag" href="">RNfsd f sdfsfsdfS3</a><a class="news-item__tag" href="">RNS4</a>
-              </div><!--end news-item__bottom -->
-            </div><!--end news-item -->
-          </div><!--end item -->
-
-        </div><!--end card-articles -->
+        <?php endif; ?>
       </main>
     </div><!--end content-wrapper -->
   </div><!--end wrapper -->
