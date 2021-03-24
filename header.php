@@ -63,7 +63,6 @@
           <ul class="list-lang">
             <li class="active"><a href="">RU</a></li>
             <li><a href="">EN</a></li>
-            <li><a href="">EU</a></li>
           </ul>
         </div>
         <div class="btns">
