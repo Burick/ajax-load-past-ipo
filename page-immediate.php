@@ -27,7 +27,6 @@ Template Name: Шаблон для ближайших IPO
 
             </div>
 
-          </div><!--end slider -->
           </div><!--end ipos-full__slider--scroll -->
           <?php
           $get_ipo_count = $wpdb->get_results("SELECT COUNT(*) FROM `budipo`");
@@ -35,7 +34,7 @@ Template Name: Шаблон для ближайших IPO
          // print_r($get_ipo_count);
           if($get_ipo_count['COUNT(*)'] > 9){
           ?>
-                   <div class="slide-nav-bottom">
+          <div class="slide-nav-bottom">
             <div class="slide-steps"><span class="step">01</span> /<span class="steps">05</span></div>
             <div class="slide-progress">
               <div class="progress"></div>
