@@ -45,7 +45,26 @@ Template Name: Шаблон для страницы партнерам
         </div><!--end graf-text -->
 
         <div class="graf-img">
-          <img src="<?php echo bloginfo('template_url'); ?>/assets/svg/graff2.svg" alt="">
+        <table>
+          <tbody>
+            <tr>
+                <td>Ваш потенциальный доход</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>До 50 000$</td>
+                <td>10%</td>
+            </tr>
+            <tr>
+                <td>До 200 000$</td>
+                <td>15%</td>
+            </tr>
+            <tr>
+                <td>Более 200 000$</td>
+                <td>20%</td>
+            </tr>
+          </tbody>
+        </table>
         </div><!-- end graf-img -->
         <div class="text-small">*Для владельцев блогов, YouTube-каналов и партнерских сетей 30% фиксируется с момента старта.</div>
       </div>
@@ -55,29 +74,11 @@ Template Name: Шаблон для страницы партнерам
     <div class="wrapper">
       <h2>Прозрачная схема дохода</h2>
       <div class="row-calc">
-        <div class="calc-left">
-          <h3>Доход партнера легко узнать по формуле:</h3>
-          <div class="calc-formula">ОДК * (ОП+ЗП) = ДП ПП</div>
-          <div class="calc-form" id="calc-form">
-            <div class="b-input"><input placeholder="ОДК" type="text"></div>
-            <span>*(</span>
-            <div class="b-input"><input placeholder="ОП" type="text"></div>
-            <span>+</span>
-            <div class="b-input"><input placeholder="ЗП" type="text"></div>
-            <span>)=</span>
-            <div class="b-input"><input placeholder="ДП ПП" type="text"></div>
-          </div><!--end calc-form -->
-          <p>ОДК — общий депозит клиентов</p>
-          <p>ОП — открытие позиции (5%)</p>
-          <p>ЗП — закрытие позиции (1%)</p>
-          <p>ДП ПП — процент партнера (10-30% в зависимости от капитала)</p>
-          <div class="left-btn"><a href="#" class="btn btn-white">Рассчитать свой процент</a></div>
+        <div class="calc-center">
+          <p>Вы получаете вознаграждение со всех комиcсий, которые уплачивает ваш партнер.</p>
+          <p>Например, вы привлекли в компанию 300 000 $, партнеры уплатили комиссию в размере 60 000$, размер вашего партнерского вознаграждения составит 12 000$.</p>
+          <p>*среднее время оборота инвестиционного капитала составляет 93 дня</p>
         </div><!--end calc-left -->
-        <div class="calc-right">
-          <h3>Пример:</h3>
-          <p>Партнер верхнего уровня с ОДК $300 000 руб. получит $5400 прибыли за 93 дня (среднее время оборота инвестиционного капитала).</p>
-        </div><!--end calc-right -->
-        <div class="mobile-btn"><a href="#" class="btn btn-white">Рассчитать свой процент</a></div>
       </div><!--end row-calc -->
     </div><!--end wrapper -->
   </section>
