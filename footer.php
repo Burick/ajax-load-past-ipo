@@ -24,9 +24,11 @@
       </div><!--end foot-top -->
       <div class="foot-bottom">
         <div class="foot-left">
-          <div class="foot-col cl1"><a href="#">Предупреждение о рисках</a></div>
-          <div class="foot-col cl2"><a href="#">Положение о конфиденциальности</a></div>
-          <div class="foot-col cl3"><a href="#">Регламент пользователя </a></div>
+        <?php if ( is_active_sidebar( 'sidebar-5' ) ) : ?>
+
+          <?php dynamic_sidebar( 'sidebar-5' ); ?>
+
+        <?php endif; ?>
         </div>
         <div class="foot-logo"><a href="#" class="logo-f"><img src="<?php echo bloginfo('template_url'); ?>/assets/svg/foot-logo.svg" alt=""></a></div>
       </div><!--end foot-bottom -->
@@ -258,8 +260,6 @@ foreach($get_coms as $value){
 });
 </script>
 <?php
-  } else {
-   echo 'Другое';
   }
 ?>
 </body>
