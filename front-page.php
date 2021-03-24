@@ -329,6 +329,27 @@
                           день публичных торгов</div>
                         <div class="col2"><?php echo $value->first_day_profit_percent; ?> %</div>
                       </div>
+                      <div class="b-row">
+                        <div class="col1">Тикер</div>
+                        <div class="col2"><a href="<?php echo get_post_permalink( $selectProducts[0]->post_id ); ?>"><?php echo $value->ticker; ?></a></div>
+                      </div>
+                      <div class="b-row">
+                        <div class="col1">Cфера</div>
+                        <div class="col2"><strong class="color_<?php echo $value->sphere; ?>"><?php echo $category[$value->sphere]; ?></strong></div>
+                      </div>
+                      <div class="b-row">
+                        <div class="col1">Первый торговый день</div>
+                        <div class="col2"><?php
+
+                        //echo $value->ipo_date;
+                        $x= explode('T',$value->ipo_date);
+
+                        $x = explode('-',$x[0]);
+
+                          echo $x[2].'-'.$x[1].'-'.$x[0];
+
+                        ?></div>
+                      </div>
                       <div class="b-row sel">
                         <div class="col1">Прибыль на дату окончания Lock Up периода</div>
                         <div class="col2"><?php echo $value->lockup_day_profit_percent; ?> %</div>
