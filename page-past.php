@@ -42,7 +42,7 @@ $lang = 'eng';
                             </div>
                         </div><!--end drop-select -->
                         <div class="drop-select">
-                            <div class="drop-select__value"><input id="" type="hidden"><span
+                            <div class="drop-select__value"><input id="" type="hidden" ><span
                                         id="open-datepicker">Дата</span></div>
                             <span class="arr"><img
                                         src="<?php echo bloginfo('template_url'); ?>/assets/svg/arr-select2.svg" alt=""></span>
@@ -483,7 +483,7 @@ $args = [
 ];
 
 echo paginate_links($args);
-// true_option_page();
+
 ?>
 
 <?php
