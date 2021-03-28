@@ -90,7 +90,7 @@ $lang = 'eng';
                         <div class="deal-full-scroll">
                             <div class="deal-full-scroll__content">
 
-
+<!------------------------------------------------->
                                 <?php
                                 global $wpdb;
 
@@ -303,6 +303,10 @@ $lang = 'eng';
                                         </div><!--end block -->
                                     </div><!--end deal-item -->
 
+
+
+
+
                                     <?php
 
                                 }
@@ -310,8 +314,12 @@ $lang = 'eng';
                                 ?>
 
                             </div><!--end deal-right-scroll__content -->
+
+                            <!--------------------------------------------------->
+
+
                         </div><!--end deal-right-scroll -->
-                        <div class="b-btn-center"><a href="#" class="btn">Загрузить все</a></div>
+                        <div class="b-btn-center"><a href="#" class="btn" id="load_more">Загрузить все</a></div>
                     </div><!--end deal-full -->
                 </div><!--end tab-type-blocks -->
                 <div class="tab-type-table">
