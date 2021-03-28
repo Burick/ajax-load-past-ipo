@@ -42,7 +42,7 @@ $lang = 'eng';
                             </div>
                         </div><!--end drop-select -->
                         <div class="drop-select">
-                            <div class="drop-select__value"><input id="" type="hidden" ><span
+                            <div class="drop-select__value"><input id="" type="hidden"><span
                                         id="open-datepicker">Дата</span></div>
                             <span class="arr"><img
                                         src="<?php echo bloginfo('template_url'); ?>/assets/svg/arr-select2.svg" alt=""></span>
@@ -85,243 +85,88 @@ $lang = 'eng';
                         </a>
                     </div>
                 </div><!--end ipos-filter -->
+
+
                 <div class="tab-type-blocks">
                     <div class="deal-full">
+                        <?php
+                        global $wpdb;
+
+                        //$post_per_page  = get_option('posts_per_page');
+                        // постов на странице
+                        $post_per_page = 3;
+                        // номер страницы
+                        $page = get_query_var('paged') ? get_query_var('paged') : 1;
+                        // смещение для выборки
+                        $offset = ($page * $post_per_page) - $post_per_page;
+
+
+                        // переменные из формы фильтра
+                        $sphere = get_query_var('sphere') ? get_query_var('sphere') : 1;
+                        $ipo_date = get_query_var('ipo_date') ? get_query_var('ipo_date') : 1;
+                        $rating = get_query_var('rating') ? get_query_var('rating') : 1;
+
+
+                        $query = "SELECT * FROM pastipo";
+                        //$get_ipo = $wpdb->get_results($query);
+                        $total_record = count($wpdb->get_results($query, ARRAY_A));
+                        $query .= ' ORDER BY id DESC LIMIT ' . $offset . ', ' . $post_per_page;
+                        $get_ipo = $wpdb->get_results($wpdb->prepare($query));
+
+
+                        if ('ru' == $lang) {
+
+                            $category = array('-');
+                            $category[] = 'Consumer Staples';
+                            $category[] = 'Health Care';
+                            $category[] = 'Consumer Discretionary';
+                            $category[] = 'Technology';
+                            $category[] = 'Materials';
+                            $category[] = 'Real Estate';
+                            $category[] = 'Financials';
+                            $category[] = 'Industrials';
+                            $category[] = 'Energy';
+                            $category[] = 'Utilities';
+                            $category[] = 'Communication Services';
+
+                        } else {
+
+                            $category = array('-');
+                            $category[] = 'Товары массового потребления';
+                            $category[] = 'Здравоохранение';
+                            $category[] = 'Потребительский сектор';
+                            $category[] = 'Высокие технологии';
+                            $category[] = 'Сырьевой сектор';
+                            $category[] = 'Недвижимость';
+                            $category[] = 'Финансы';
+                            $category[] = 'Промышленность';
+                            $category[] = 'Энергетика';
+                            $category[] = 'Инфраструктура';
+                            $category[] = 'Communication Services';
+
+                        }
+                        ?>
+
                         <div class="deal-full-scroll">
                             <div class="deal-full-scroll__content">
-
-<!------------------------------------------------->
                                 <?php
-                                global $wpdb;
-
-                                //$post_per_page  = get_option('posts_per_page');
-                                // постов на странице
-                                $post_per_page = 3;
-                                // номер страницы
-                                $page = get_query_var('paged') ? get_query_var('paged') : 1;
-                                // смещение для выборки
-                                $offset = ($page * $post_per_page) - $post_per_page;
-
-
-                                // переменные из формы фильтра
-                                $sphere = get_query_var('sphere') ? get_query_var('sphere') : 1;
-                                $ipo_date = get_query_var('ipo_date') ? get_query_var('ipo_date') : 1;
-                                $rating = get_query_var('rating') ? get_query_var('rating') : 1;
-
-
-
-
-                                $query = "SELECT * FROM pastipo";
-                                //$get_ipo = $wpdb->get_results($query);
-                                $total_record = count($wpdb->get_results($query, ARRAY_A));
-                                $query .= ' ORDER BY id DESC LIMIT ' . $offset . ', ' . $post_per_page;
-                                $get_ipo = $wpdb->get_results(  $wpdb->prepare( $query ) );
-
-
-
-
-
-                                if ('ru' == $lang) {
-
-                                    $category = array('-');
-
-                                    $category[] = 'Consumer Staples';
-
-                                    $category[] = 'Health Care';
-
-                                    $category[] = 'Consumer Discretionary';
-
-                                    $category[] = 'Technology';
-
-                                    $category[] = 'Materials';
-
-                                    $category[] = 'Real Estate';
-
-                                    $category[] = 'Financials';
-
-                                    $category[] = 'Industrials';
-
-                                    $category[] = 'Energy';
-
-                                    $category[] = 'Utilities';
-
-                                    $category[] = 'Communication Services';
-
-                                } else {
-
-                                    $category = array('-');
-
-                                    $category[] = 'Товары массового потребления';
-
-                                    $category[] = 'Здравоохранение';
-
-                                    $category[] = 'Потребительский сектор';
-
-                                    $category[] = 'Высокие технологии';
-
-                                    $category[] = 'Сырьевой сектор';
-
-                                    $category[] = 'Недвижимость';
-
-                                    $category[] = 'Финансы';
-
-                                    $category[] = 'Промышленность';
-
-                                    $category[] = 'Энергетика';
-
-                                    $category[] = 'Инфраструктура';
-
-                                    $category[] = 'Communication Services';
-
-                                }
-                                get_template_part( 'template-parts/deal_item' );
                                 foreach ($get_ipo as $value) {
-                                    //	print_r($value);
-                                    //  exit();
+
                                     $skuCode = $value->ticker;
                                     $selectProducts = $wpdb->get_results("SELECT * FROM `wp_postmeta` WHERE `meta_key` = 'tiker' AND `meta_value` = '$skuCode'");
-                                    ?>
-                                    <div class="deal-item">
-                                        <div class="block">
-                                            <div class="img"><img
-                                                        src="https://static-dev-ff4708e.s3.eu-north-1.amazonaws.com/logos/<?php echo $value->ticker; ?>_logo.jpg"
-                                                        alt=""></div>
-                                            <div class="tit-text"> <?php echo $value->company_name; ?></div>
-                                            <div class="bs-rows">
-                                                <div class="b-row">
-                                                    <div class="col1">Цена первичного размещения</div>
-                                                    <div class="col2"><?php echo $value->price; ?> $</div>
-                                                </div>
-                                                <div class="b-row">
-                                                    <div class="col1">Цена на дату окончания
-                                                        Lock Up периода
-                                                    </div>
-                                                    <div class="col2"><?php echo $value->price_lockup; ?> $</div>
-                                                </div>
-                                                <div class="b-row">
-                                                    <div class="col1">Заработок за первый
-                                                        день публичных торгов
-                                                    </div>
-                                                    <div class="col2"><?php echo $value->first_day_profit_percent; ?>
-                                                        %
-                                                    </div>
-                                                </div>
-                                                <div class="b-row">
-                                                    <div class="col1">Тикер</div>
-                                                    <div class="col2"><a
-                                                                href="<?php echo get_post_permalink($selectProducts[0]->post_id); ?>"><?php echo $value->ticker; ?></a>
-                                                    </div>
-                                                </div>
-                                                <div class="b-row">
-                                                    <div class="col1">Cфера</div>
-                                                    <div class="col2"><strong
-                                                                class="color_<?php echo $value->sphere; ?>"><?php echo $category[$value->sphere]; ?></strong>
-                                                    </div>
-                                                </div>
-                                                <div class="b-row">
-                                                    <div class="col1">Первый торговый день</div>
-                                                    <div class="col2"><?php
 
-                                                        //echo $value->ipo_date;
-                                                        $x = explode('T', $value->ipo_date);
-
-                                                        $x = explode('-', $x[0]);
-
-                                                        echo $x[2] . '-' . $x[1] . '-' . $x[0];
-
-                                                        ?></div>
-                                                </div>
-                                                <div class="b-row sel">
-                                                    <div class="col1">Прибыль на дату окончания Lock Up периода</div>
-                                                    <div class="col2"><?php echo $value->lockup_day_profit_percent; ?>
-                                                        %
-                                                    </div>
-                                                </div>
-                                                <div class="b-row">
-                                                    <div class="col1">Рейтинг от IPO.one:</div>
-                                                    <div class="col2">
-                                                        <div class="stars">
-
-                                                            <?php
-
-                                                            if ($value->rating == 0) {
-
-                                                                ?>
-
-                                                                <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star2.png"
-                                                                     alt="">
-                                                                <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star2.png"
-                                                                     alt="">
-                                                                <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star2.png"
-                                                                     alt="">
-                                                                <?php
-
-                                                            } elseif ($value->rating == 1) {
-
-                                                                ?>
-                                                                <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star1.png"
-                                                                     alt="">
-                                                                <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star2.png"
-                                                                     alt="">
-                                                                <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star2.png"
-                                                                     alt="">
-
-                                                                <?php
-
-                                                            } elseif ($value->rating == 2) {
-
-                                                                ?>
-                                                                <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star1.png"
-                                                                     alt="">
-                                                                <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star1.png"
-                                                                     alt="">
-                                                                <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star2.png"
-                                                                     alt="">
-
-                                                                <?php
-
-                                                            } elseif ($value->rating == 3) {
-
-                                                                ?>
-                                                                <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star1.png"
-                                                                     alt="">
-                                                                <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star1.png"
-                                                                     alt="">
-                                                                <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star1.png"
-                                                                     alt="">
-
-                                                                <?php
-
-                                                            }
-
-                                                            ?>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div><!--end block -->
-                                    </div><!--end deal-item -->
-
-
-
-
-
-                                    <?php
+                                    get_template_part('template-parts/deal', 'items', ['value' => $value, 'selectProducts' => $selectProducts]);
 
                                 }
 
                                 ?>
-
                             </div><!--end deal-right-scroll__content -->
-
-                            <!--------------------------------------------------->
-
-
                         </div><!--end deal-right-scroll -->
-                        <div class="b-btn-center"><a href="#" class="btn" id="load_more">Загрузить все</a></div>
+                        <div class="b-btn-center"><a href="#" class="btn" id="load_more">Загрузить еще</a></div>
                     </div><!--end deal-full -->
                 </div><!--end tab-type-blocks -->
+
+
                 <div class="tab-type-table">
                     <div class="deal-table">
                         <div class="deal-table__row">
@@ -353,97 +198,14 @@ $lang = 'eng';
                         //$get_ipo = $wpdb->get_results("SELECT * FROM `pastipo`");
 
                         foreach ($get_ipo as $value) {
-                            ?>
-                            <div class="deal-table__row">
-                                <div class="deal-table__td td-stars">
-                                    <?php
-                                    if ($value->rating == 0) {
-                                        $skuCode = $value->ticker;
-                                        $selectProducts = $wpdb->get_results("SELECT * FROM `wp_postmeta` WHERE `meta_key` = 'tiker' AND `meta_value` = '$skuCode'");
-                                        ?>
 
-                                        <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star2.png" alt="">
-                                        <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star2.png" alt="">
-                                        <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star2.png" alt="">
-                                        <?php
+                            get_template_part('template-parts/deal-items', 'row', ['value' => $value, 'selectProducts' => $selectProducts]);
 
-                                    } elseif ($value->rating == 1) {
-
-                                        ?>
-                                        <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star1.png" alt="">
-                                        <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star2.png" alt="">
-                                        <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star2.png" alt="">
-
-                                        <?php
-
-                                    } elseif ($value->rating == 2) {
-
-                                        ?>
-                                        <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star1.png" alt="">
-                                        <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star1.png" alt="">
-                                        <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star2.png" alt="">
-
-                                        <?php
-
-                                    } elseif ($value->rating == 3) {
-
-                                        ?>
-                                        <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star1.png" alt="">
-                                        <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star1.png" alt="">
-                                        <img src="<?php echo bloginfo('template_url'); ?>/assets/img/star1.png" alt="">
-
-                                        <?php
-
-                                    }
-
-
-                                    ?>
-                                </div>
-                                <div class="deal-table__td td-company"><?php echo $value->company_name; ?></div>
-                                <div class="deal-table__td td-tick"><a
-                                            href="<?php echo get_post_permalink($selectProducts[0]->post_id); ?>"><?php echo $value->ticker; ?></a>
-                                </div>
-                                <div class="deal-table__td"><?php echo $category[$value->sphere]; ?></div>
-                                <div class="deal-table__td"><?php
-
-                                    //echo $value->ipo_date;
-                                    $x = explode('T', $value->ipo_date);
-
-                                    $x = explode('-', $x[0]);
-
-                                    echo $x[2] . '-' . $x[1] . '-' . $x[0];
-
-                                    ?></div>
-                                <div class="deal-table__td">$<?php echo $value->price_first_day; ?></div>
-                                <div class="deal-table__td"><span
-                                            class="green"><?php echo $value->first_day_profit_percent; ?>%</span></div>
-                                <div class="deal-table__td"><span
-                                            class="green"><?php echo $value->price_lockup; ?>%</span></div>
-                                <?php
-                                $e = explode('T', $value->lockup_date);
-
-                                ?>
-                                <div class="deal-table__td"><?php
-
-                                    $time_ex = explode('-', $e[0]);
-                                    echo $time_ex[2] . '-' . $time_ex[1] . '-' . $time_ex[0];
-                                    ?>
-                                </div>
-
-                                <div class="deal-table__td"><span
-                                            class="green"><?php echo $value->lockup_day_profit_percent; ?>%</span></div>
-                                <div class="deal-table__td"><a
-                                            href="<?php echo get_post_permalink($selectProducts[0]->post_id); ?>"
-                                            class="btn">Подробнее</a></div>
-                            </div><!--end deal-table__row -->
-
-                            <?php
                         }
 
                         ?>
                     </div><!--end deal-table -->
                 </div><!--end tab-type-table -->
-
 
             </main>
         </div><!--end content-wrapper -->
@@ -471,7 +233,7 @@ $lang = 'eng';
 
 
 $args = [
-    'base' => '/'.$post->post_name.'/%_%',
+    'base' => '/' . $post->post_name . '/%_%',
     //'format'       => '?paged=%#%',
     'format' => 'page/%#%',
     'total' => ceil($total_record / $post_per_page),
