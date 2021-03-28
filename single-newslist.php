@@ -32,7 +32,7 @@ get_header();
 
                   foreach($rows as $row)
                   {
-                    echo '<a href=" ' . $row['acf_adres_ssylki'] . ' "> ' . $row['acf_nazvanie_tikera'] . '</a>';
+                    echo '<a href="/company' . $row['acf_adres_ssylki'] . ' "> ' . $row['acf_nazvanie_tikera'] . '</a>';
                   }
                 }
               ?>
@@ -72,7 +72,7 @@ get_header();
 
         ?>
 
-        <h2 class="mobile-hidden">Новинки</h2>
+        <h2 class="mobile-hidden">Другие новости</h2>
         <div class="news-list mobile-hidden"> 
         <?php if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
 

@@ -151,7 +151,7 @@ get_header();
                  ?></div>
               </div><!--end card-info__row -->
               <div class="card-info__row">
-                <div class="col1">Доходность по итогам Lock up периодна</div>
+                <div class="col1">Доходность по итогам<br>Lock up периодна</div>
                 <div class="col2"><?php
                  if($get_com->ipo->price_lockup){
                  	 echo $get_com->ipo->price_lockup.' %';
@@ -225,7 +225,7 @@ get_header();
                 </div>
                 <div class="b-row">
                   <div class="col1">Веб сайт</div>
-                  <div class="col2"><a href="<?php echo $get_com->website; ?>"><?php echo $get_com->ticker; ?></a></div>
+                  <div class="col2"><a href="<?php echo $get_com->website; ?>" target="_blank"><?php echo $get_com->website; ?></a></div>
                 </div>
               </div><!--end block -->
               <div class="block">
@@ -296,14 +296,14 @@ get_header();
             <div class="card-grafic__chart">
             	<?php
             	$id_p = get_the_ID();
-    $get_tikers = get_post_meta($id_p,'tiker',true);
+              $get_tikers = get_post_meta($id_p,'tiker',true);
 
-    $get_grafs = 'https://static-dev-ff4708e.s3.eu-north-1.amazonaws.com/charts/'.$get_tikers.'.json';
+              $get_grafs = 'https://static-dev-ff4708e.s3.eu-north-1.amazonaws.com/charts/'.$get_tikers.'.json';
 
 
-    $get_coms = curlhttp($get_grafs);
+              $get_coms = curlhttp($get_grafs);
 
-    	if(!$get_coms){
+    	        if(!$get_coms){
     		?>
     		       <div class="card-grafic__info">
           <div class="card-grafic__info__title">
@@ -362,8 +362,8 @@ get_header();
               ?>
               <div class="item">
                 <div class="news-item">
-                  <a href="<?php the_permalink(); ?>" class="news-item__label"><?php the_title(); ?></a>
-                  <div class="news-item__text"><?php echo get_the_excerpt(); ?></div>
+                  <a href="<?php the_permalink(); ?>" class="news-item__label"><?php gog_limit_title(120, '...'); ?></a>
+                  <div class="news-item__text"><?php the_excerpt(); ?></div>
 
                   <div class="news-item__bottom--mobile">
                     <div class="news-item__time">

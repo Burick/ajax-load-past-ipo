@@ -67,7 +67,7 @@
         </div>
         <div class="btns">
           <a href="#" class="btn js-pop-subscribe">Подписаться на рассылку</a>
-          <a href="#" class="btn btn-op">Регистрация / Вход</a>
+          <a href="https://my.ipo.one" class="btn btn-op">Регистрация / Вход</a>
         </div>
       </div>
     </div>
@@ -81,8 +81,8 @@
         ?>
         </div><!--end mobile-menu__scroll -->
         <div class="btns">
-            <a href="#" class="btn">Подписаться на рассылку</a>
-            <a href="#" class="btn btn-op">Регистрация / Вход</a>
+            <a href="#" class="btn js-pop-subscribe">Подписаться на рассылку</a>
+            <a href="https://my.ipo.one" class="btn btn-op">Регистрация / Вход</a>
           </div>
       </div><!--end mobile-menu__wrapper-->
     </div><!--end mobile-menu -->

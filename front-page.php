@@ -53,7 +53,7 @@
           </div>
         </div>
         <div class="b-text">Никаких стартапов! Только акции глобальных корпораций с листингом на NASDAQ и NYSE </div>
-        <div class="link-lvl1"><a href="#" class="btn">Начать инвестировать</a></div>
+        <div class="link-lvl1"><a href="https://my.ipo.one" class="btn">Начать инвестировать</a></div>
       </div>
       <div class="main-video">
         <div class="b-img"><img src="<?php echo bloginfo('template_url'); ?>/assets/svg/lvl1-bg.svg" alt=""></div>
@@ -104,7 +104,7 @@
           	$get_ipo = $wpdb->get_results("SELECT * FROM `budipo` LIMIT 3");
          // 	echo '<pre>';
 
-          	   $category = array('-');
+          	$category = array('-');
 
             $category[] = 'Consumer Staples';
 
@@ -148,8 +148,7 @@
                   <div class="p-row"><span>Диапазон цены</span><strong><?php echo $value->offering_range_min; ?>-<?php echo $value->offering_range_max; ?> $</strong></div>
 
                   <?php
-                                    $ex_date = explode('T',$value->ipo_date);
-
+                    $ex_date = explode('T',$value->ipo_date);
                   ?>
                   <div class="p-row"><span>Планируемая дата IPO:</span><strong><?php
                   // echo $ex_date[0];
@@ -577,7 +576,7 @@
         Мы работаем в европейской юрисдикции и принимаем заявки со всего мира <strong>24/7</strong>.<br>
         Наша цель: предоставить доступ к высококлассные сделкам <strong>IPO</strong> для широкого круга розничных клиентов, вне зависимости от их возраста, профессии, уровня дохода и гражданства.
       </div>
-      <div class="bottom-btn"><a href="#" class="btn">Начать зарабатывать</a></div>
+      <div class="bottom-btn"><a href="https://my.ipo.one" class="btn">Начать зарабатывать</a></div>
     </div>
     <div class="bdq dq8-1"></div>
   </div><!--end lvl -->

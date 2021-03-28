@@ -59,17 +59,9 @@
 	  		<div class="popup-cont">
 	  			<div class="popup-title">Остались вопросы?</div>
 	  			<div class="desc">Получите ответы и присоединйтесь к  нам</div>
-	  			<div class="form-question">
-	  				<div class="b-row">
-	  					<div class="b-pole"><input class="pole" type="text" placeholder=" " name="email" id="pop-question__form-email"><label for="pop-question__form-email">E-mail</label></div>
-	  				</div><!--end b-row -->
-	  				<div class="b-row">
-	  					<div class="b-pole"><input class="pole" type="text" placeholder=" " name="que" id="pop-question__form-question"><label for="pop-question__form-question">Вопрос</label></div>
-	  				</div><!--end b-row -->
-	  				<div class="b-row">
-	            		<div class="b-btn"><input class="btn" type="submit" value="Задать вопрос"></div>
-	  				</div><!--end b-row -->
-	  			</div><!--end form-question -->
+
+            <?php echo do_shortcode('[contact-form-7 id="2251" title="Остались вопросы форма"]'); ?>
+
 	  		</div><!--end popup-cont -->
 	  		<div class="pop-qua1"></div>
 	  		<div class="pop-qua2"></div>

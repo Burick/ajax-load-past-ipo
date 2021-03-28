@@ -49,7 +49,7 @@ get_header();
 
                   foreach($rows as $row)
                   {
-                    echo '<a class="news-item__tag" href=" ' . $row['acf_adres_ssylki'] . ' "> ' . $row['acf_nazvanie_tikera'] . '</a>';
+                    echo '<a class="news-item__tag" href="/company' . $row['acf_adres_ssylki'] . ' "> ' . $row['acf_nazvanie_tikera'] . '</a>';
                   }
                 }
               ?>

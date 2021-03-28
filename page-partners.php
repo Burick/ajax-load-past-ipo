@@ -88,31 +88,41 @@ Template Name: Шаблон для страницы партнерам
       <div class="list-info-images">
         <div class="item">
           <div class="block">
-            <div class="icon"><img src="<?php echo bloginfo('template_url'); ?>/assets/svg/pc1.svg" alt=""></div>
+            <div class="icon ic1">
+              <span></span>
+            </div>
             Договор составляется в течение 24 часов и действует 50 лет.
           </div><!--end block -->
         </div><!--end item -->
         <div class="item">
           <div class="block">
-            <div class="icon"><img src="<?php echo bloginfo('template_url'); ?>/assets/svg/pc2.svg" alt=""></div>
+            <div class="icon ic2">
+              <span></span>
+            </div>
             Участие в программе доступно физическим и юридических лицам, ИП.
           </div><!--end block -->
         </div><!--end item -->
         <div class="item">
           <div class="block">
-            <div class="icon"><img src="<?php echo bloginfo('template_url'); ?>/assets/svg/pc3.svg" alt=""></div>
+            <div class="icon ic3">
+              <span></span>
+            </div>
             Комиссионные вознаграждения поступают каждые 30 дней.
           </div><!--end block -->
         </div><!--end item -->
         <div class="item">
           <div class="block">
-            <div class="icon"><img src="<?php echo bloginfo('template_url'); ?>/assets/svg/pc4.svg" alt=""></div>
+            <div class="icon ic4">
+              <span></span>
+            </div>
             Компетенции партнера повышаются за счет образовательных ресурсов IPO.one.
           </div><!--end block -->
         </div><!--end item -->
         <div class="item">
           <div class="block">
-            <div class="icon"><img src="<?php echo bloginfo('template_url'); ?>/assets/svg/pc5.svg" alt=""></div>
+            <div class="icon ic5">
+              <span></span>
+            </div>
             Действует личный кабинет партнера с понятным функционалом
           </div><!--end block -->
         </div><!--end item -->
@@ -121,19 +131,25 @@ Template Name: Шаблон для страницы партнерам
       <div class="list-info-images">
         <div class="item">
           <div class="block">
-            <div class="icon"><img src="<?php echo bloginfo('template_url'); ?>/assets/svg/pc6.svg" alt=""></div>
+            <div class="icon ic6">
+              <span></span>
+            </div>
             Предоставление документов для оформления договора. Список по <a href="#">ссылке</a>
           </div><!--end block -->
         </div><!--end item -->
         <div class="item">
           <div class="block">
-            <div class="icon"><img src="<?php echo bloginfo('template_url'); ?>/assets/svg/pc7.svg" alt=""></div>
+            <div class="icon ic7">
+              <span></span>
+            </div>
             Соблюдение требований размещения рекламных кампаний и реферальных ссылок.
           </div><!--end block -->
         </div><!--end item -->
         <div class="item">
           <div class="block">
-            <div class="icon"><img src="<?php echo bloginfo('template_url'); ?>/assets/svg/pc8.svg" alt=""></div>
+            <div class="icon ic8">
+              <span></span>
+            </div>
             Сотрудничество с отделом маркетинга IPO.one.
           </div><!--end block -->
         </div><!--end item -->
