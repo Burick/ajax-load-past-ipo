@@ -11,7 +11,7 @@ $lang = 'eng';
 
     <div class="wrapper">
 
-        <? get_template_part('template-parts/breadcrumbs') ?>
+        <?php get_template_part('template-parts/breadcrumbs') ?>
 
         <div class="content-wrapper">
             <main class="content">
@@ -112,11 +112,23 @@ $lang = 'eng';
                         $total_record = count($wpdb->get_results($query, ARRAY_A));
                         $query .= ' ORDER BY id DESC LIMIT ' . $offset . ', ' . $post_per_page;
                         $get_ipo = $wpdb->get_results($wpdb->prepare($query));
+                        ?>
+                        <script>
+                            let ajax_data ={
+                                sphere: <?php echo $sphere ?>,
+                                ipo_date: <?php echo $ipo_date ?>,
+                                rating: <?php echo $rating ?>,
+                                page: <?php echo $page ?>,
+                                offset: <?php echo $offset ?>,
 
+                            }
+                        </script>
+
+                        <?php
 
                         if ('ru' == $lang) {
 
-                            $category = array('-');
+                            $category = ['-'];
                             $category[] = 'Consumer Staples';
                             $category[] = 'Health Care';
                             $category[] = 'Consumer Discretionary';
@@ -131,7 +143,7 @@ $lang = 'eng';
 
                         } else {
 
-                            $category = array('-');
+                            $category = ['-'];
                             $category[] = 'Товары массового потребления';
                             $category[] = 'Здравоохранение';
                             $category[] = 'Потребительский сектор';
