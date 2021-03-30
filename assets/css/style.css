@@ -741,7 +741,7 @@ h2 {font-size: 36px;font-weight: 400;padding: 0 0 48px;margin: 0;font-family: 'O
 .ip-item .block {padding: 30px 30px 0;background: #fff;color:#000;font-size: 14px;}
 .ip-item .block .icon {margin-bottom: 19px; min-height: 52px; display: flex; align-items: center}
 .ip-item .block .icon img {max-height: 52px;}
-.ip-item .block .name {font-weight: bold;font-size: 18px;}
+.ip-item .block .name {font-weight: bold;font-size: 18px;line-height: 2;}
 .ip-item .block .title {font-size: 14px;font-family: 'Oswald', sans-serif;padding-bottom: 11px;font-weight: 400;}
 .ip-item .block .title a {color: #1357DD;text-decoration: underline;}
 .ip-item .block .text {padding-bottom: 16px;height: 79px;max-height: 79px;}
@@ -1663,11 +1663,14 @@ main h1 {font-size: 36px;margin: 0;padding: 0 0 10px; text-transform: uppercase;
 .card-steps__col {width:66.77%}
 .card-info__col {width:33.33%}
 .card-steps {background: #fff;padding:30px 30px 53px; display: flex; flex-direction: column;}
-.card-steps__up {display: flex;width: 100%;padding-bottom: 27px;}
-.card-steps__img {width: 100px;margin-right: 20px;}
+.card-steps__up {display: flex;width: 100%;padding-bottom: 5px;}
+.card-steps__img {width: 200px;margin-right: 20px;}
 .card-steps__text {font-size: 16px;}
-.card-steps__text h2 {font-size: 22px;padding: 0 0 8px;margin: 0;}
+.card-steps__text h2 {font-size: 22px;padding: 0 0 8px;margin: 0;font-weight: bold;text-transform: capitalize;}
+.card-steps__text .name{font-size: 18px;font-weight: 400;font-family: 'Oswald', sans-serif;}
 .card-steps__list {margin: 0;padding: 0; list-style: none; display: flex; justify-content: space-between;}
+.card-steps__brief {margin-bottom: 31px;}
+.card-steps__brief p{padding-bottom: 0;font-size: 16px;}
 /*
 .card-steps__list:after {content:""; position: absolute;top:25px;left:3%; right:3%; background: url(../svg/line2.svg) 0 0 repeat-x;height: 1px;} */
 .card-steps__list li {width:25%; flex: 0 0 25%;text-align: center;}
@@ -1979,11 +1982,12 @@ table tbody tr:hover{background-color: #cbcbcb;color: #fff;}
     header #hamburger-icon {top:2px; left: auto;right:2px}
     header .header-right {position: relative;top: 0; padding-right: 42px;}
     header .b-notify {top: -2px; display: none;}
+    header .b-profile {top: -2px; display: none;}
     header .b-profile {top: -1px;}
     #hamburger-icon .line {height: 2px;}
     header .b-logo .logo {height: 18px; background-size: contain;}
     header .b-logo {top:-3px}
-    header .b-lang {top: -1px;}
+    header .b-lang {top: -1px;display: none;}
     header .mobile-menu .btns {display: block;position: absolute;bottom: 10px;left: 10px;right: 10px;}
     header .mobile-menu .btns .btn-op {border: 1px solid #1357DD;color:#000; }
     header .mobile-menu .btns .btn {margin:0 0 10px;width: 100%; max-width: 340px; display: block;font-size: 16px;}

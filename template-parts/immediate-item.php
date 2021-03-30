@@ -79,8 +79,8 @@
             <div class="ip-item">
               <div class="block">
                 <div class="icon"><img src="https://static-dev-ff4708e.s3.eu-north-1.amazonaws.com/logos/<?php echo $value->ticker;  ?>_logo.jpg" alt=""></div>
-                <?php echo $value->company_name; ?>
-                <div class="title"><?php echo $value->stock; ?>:<a href="<?php echo get_post_permalink( $selectProducts[0]->post_id ); ?>"><?php echo $value->ticker; ?></a></div>
+                <div class="name"><?php echo $value->company_name; ?></div>
+                <div class="title"><?php echo $value->stock; ?> : <a href="<?php echo get_post_permalink( $selectProducts[0]->post_id ); ?>"><?php echo $value->ticker; ?></a></div>
                 <div class="text"><?php echo $value->lan_eng; ?></div>
                 <div class="props">
                   <div class="p-row"><span>Deal size</span><strong>35.00 $</strong></div>

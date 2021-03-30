@@ -20,7 +20,7 @@ get_header();
 
   $get_com = curlhttp($link_company);
   //echo '<pre>';
- // print_r($get_com);
+  // print_r($get_com);
 
 ?>
     <div class="content-wrapper">
@@ -31,10 +31,13 @@ get_header();
               <div class="card-steps__up">
                 <div class="card-steps__img"><img src="https://static-dev-ff4708e.s3.eu-north-1.amazonaws.com/logos/<?php echo $get_com->ticker;  ?>_logo.jpg" alt=""></div>
                 <div class="card-steps__text">
-                  <h2><?php echo $get_com->stock; ?>:<a href="<?php echo get_page_link( $id );?>"><?php echo $get_com->ticker; ?></a></h2>
-                  <p><?php echo $get_com->l10_n->en->brief; ?></p>
+                  <h2><?php echo $get_com->company_name; ?></h2>
+                  <div class="name"><?php echo $get_com->stock; ?> : <?php echo $get_com->ticker; ?></div>
                 </div>
               </div><!--end card-steps__up -->
+              <div class="card-steps__brief">
+                <p><?php echo $get_com->l10_n->en->brief; ?></p>
+              </div>
               <ul class="card-steps__list">
                 <li class="blue-check">
                   <span class="card-step">
@@ -124,8 +127,8 @@ get_header();
                 <div class="col2">
                   <span class="blue">
                   <?php
-                    if($get_com->ipo->price){
-                      echo $get_com->ipo->price.' $';
+                    if($get_com->ipo->price_last_day){
+                      echo $get_com->ipo->price_last_day.' $';
                     }else{
                       echo ' - ';
                     }

@@ -111,7 +111,7 @@ $lang = 'eng';
                                 $query = "SELECT * FROM pastipo";
                                 //$get_ipo = $wpdb->get_results($query);
                                 $total_record = count($wpdb->get_results($query, ARRAY_A));
-                                $query .= ' ORDER BY id ASC LIMIT ' . $offset . ', ' . $post_per_page;
+                                $query .= ' ORDER BY ipo_date DESC LIMIT ' . $offset . ', ' . $post_per_page;
                                 $get_ipo = $wpdb->get_results(  $wpdb->prepare( $query ) );
 
 
