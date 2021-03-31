@@ -101,32 +101,62 @@
           	global $wpdb;
 
 
-          	$get_ipo = $wpdb->get_results("SELECT * FROM `budipo` LIMIT 3");
+          	$get_ipo = $wpdb->get_results("SELECT * FROM `budipo` ORDER BY ipo_date DESC LIMIT 3");
          // 	echo '<pre>';
 
-          	$category = array('-');
+            if ('ru' == $lang) {
 
-            $category[] = 'Consumer Staples';
+              $category = array('-');
 
-            $category[] = 'Health Care';
+              $category[] = 'Consumer Staples';
 
-            $category[] = 'Consumer Discretionary';
+              $category[] = 'Health Care';
 
-            $category[] = 'Technology';
+              $category[] = 'Consumer Discretionary';
 
-            $category[] = 'Materials';
+              $category[] = 'Technology';
 
-            $category[] = 'Real Estate';
+              $category[] = 'Materials';
 
-            $category[] = 'Financials';
+              $category[] = 'Real Estate';
 
-            $category[] = 'Industrials';
+              $category[] = 'Financials';
 
-            $category[] = 'Energy';
+              $category[] = 'Industrials';
 
-            $category[] = 'Utilities';
+              $category[] = 'Energy';
 
-            $category[] = 'Communication Services';
+              $category[] = 'Utilities';
+
+              $category[] = 'Communication Services';
+
+          } else {
+
+              $category = array('-');
+
+              $category[] = 'Товары массового потребления';
+
+              $category[] = 'Здравоохранение';
+
+              $category[] = 'Потребительский сектор';
+
+              $category[] = 'Высокие технологии';
+
+              $category[] = 'Сырьевой сектор';
+
+              $category[] = 'Недвижимость';
+
+              $category[] = 'Финансы';
+
+              $category[] = 'Промышленность';
+
+              $category[] = 'Энергетика';
+
+              $category[] = 'Инфраструктура';
+
+              $category[] = 'Communication Services';
+
+          }
           	
             $timer_data = [];
           	foreach ($get_ipo as $value) {
@@ -274,7 +304,7 @@
             global $wpdb;
 
 
-            $get_ipo = $wpdb->get_results("SELECT * FROM `pastipo` LIMIT 3");
+            $get_ipo = $wpdb->get_results("SELECT * FROM `pastipo` ORDER BY ipo_date DESC LIMIT 3");
             //  echo '<pre>';
 
             if ('ru' == $lang) {

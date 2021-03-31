@@ -33,7 +33,7 @@
 
             }else{
 
-                          $category = array('-');
+            $category = array('-');
 
             $category[] = 'Товары массового потребления';
 
@@ -83,7 +83,7 @@
                 <div class="title"><?php echo $value->stock; ?> : <a href="<?php echo get_post_permalink( $selectProducts[0]->post_id ); ?>"><?php echo $value->ticker; ?></a></div>
                 <div class="text"><?php echo $value->lan_eng; ?></div>
                 <div class="props">
-                  <div class="p-row"><span>Deal size</span><strong>35.00 $</strong></div>
+                  <div class="p-row"><span>Размер сделки</span><strong>35.00 $</strong></div>
                   <div class="p-row"><span>Диапазон цены</span><strong><?php echo $value->offering_range_min; ?>-<?php echo $value->offering_range_max; ?> $</strong></div>
 
                   <?php
