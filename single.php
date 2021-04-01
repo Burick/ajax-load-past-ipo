@@ -21,8 +21,6 @@ get_header();
 
           ?>
           <div class="news-full__info">
-            <!-- <div class="ava"><img src="img/ava.png" alt=""></div>
-            <div class="news-item__name">Ирина Каримова</div> -->
             <time class="news-item__date" datetime="<?php echo get_the_date( 'Y-m-d' ); ?>"><?php echo get_the_date( 'd F Y' ); ?></time>
             <div class="news-item__tags">
             <?php
@@ -85,7 +83,7 @@ get_header();
           ) );
 
         ?>
-        <h2 class="mobile-hidden">Другие новости</h2>
+        <h2 class="mobile-hidden">Другие статьи</h2>
         <div class="news-list mobile-hidden"> 
         <?php if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
 
@@ -120,7 +118,7 @@ get_header();
 
         <?php else: ?>
 
-        <?php endif; ?>
+        <?php endif; wp_reset_query(); ?>
         </div><!--end news-list -->
 
       </main>
@@ -132,6 +130,9 @@ get_header();
               'numberposts' => 6,
               'category' => 1,
               'post_status' => 'publish',
+              'order' => 'DESC',
+              'orderby' => 'date',
+              'post__not_in' => array($post->ID),
             ); 
 
             $result = wp_get_recent_posts( $args );

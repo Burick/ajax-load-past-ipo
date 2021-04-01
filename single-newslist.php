@@ -21,8 +21,6 @@ get_header();
 
           ?>
           <div class="news-full__info">
-            <!-- <div class="ava"><img src="img/ava.png" alt=""></div>
-            <div class="news-item__name">Ирина Каримова</div> -->
             <time class="news-item__date" datetime="<?php echo get_the_date( 'Y-m-d' ); ?>"><?php echo get_the_date( 'd F Y' ); ?></time>
             <div class="news-item__tags">
             <?php

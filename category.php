@@ -70,7 +70,7 @@
 
             Постов нет
 
-        <?php endif; ?>
+        <?php endif; wp_reset_query(); ?>
       </main>
       <aside class="col-right tablet-two_cols">
         <div class="b-white mini-news">
@@ -96,21 +96,10 @@
                 </div>
                 <time datetime="<?php echo get_the_date( 'Y-m-d' ); ?>"><?php echo get_the_date( 'd F Y' ); ?></time>
               </div>
-              <?php
-              $rows = get_field('acf_dobavlenie_tikerov');
-                if($rows)
-                {
-
-                  foreach($rows as $row)
-                  {
-                    echo '<a class="news-item__tag" href=" ' . $row['acf_adres_ssylki'] . ' "> ' . $row['acf_nazvanie_tikera'] . '</a>';
-                  }
-                }
-              ?>
               </div><!--end news-item__bottom -->
               </div><!--end news-item -->
               <?php 
-            } 
+            }
           ?>
         </div><!--end b-white -->
 
