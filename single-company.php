@@ -20,7 +20,9 @@ get_header();
 
   $get_com = curlhttp($link_company);
   //echo '<pre>';
- // print_r($get_com);
+  // print_r($get_com);
+  $domain = parse_url($get_com->website, PHP_URL_HOST);
+  $number = $get_com->shares_number;
 
 ?>
     <div class="content-wrapper">
@@ -31,10 +33,13 @@ get_header();
               <div class="card-steps__up">
                 <div class="card-steps__img"><img src="https://static-dev-ff4708e.s3.eu-north-1.amazonaws.com/logos/<?php echo $get_com->ticker;  ?>_logo.jpg" alt=""></div>
                 <div class="card-steps__text">
-                  <h2><?php echo $get_com->stock; ?>:<a href="<?php echo get_page_link( $id );?>"><?php echo $get_com->ticker; ?></a></h2>
-                  <p><?php echo $get_com->l10_n->en->brief; ?></p>
+                  <h2><?php echo $get_com->company_name; ?></h2>
+                  <div class="name"><?php echo $get_com->stock; ?> : <?php echo $get_com->ticker; ?></div>
                 </div>
               </div><!--end card-steps__up -->
+              <div class="card-steps__brief">
+                <p><?php echo $get_com->l10_n->en->brief; ?></p>
+              </div>
               <ul class="card-steps__list">
                 <li class="blue-check">
                   <span class="card-step">
@@ -124,8 +129,8 @@ get_header();
                 <div class="col2">
                   <span class="blue">
                   <?php
-                    if($get_com->ipo->price){
-                      echo $get_com->ipo->price.' $';
+                    if($get_com->ipo->price_last_day){
+                      echo $get_com->ipo->price_last_day.' $';
                     }else{
                       echo ' - ';
                     }
@@ -143,18 +148,18 @@ get_header();
               <div class="card-info__row">
                 <div class="col1">Доходность за 1 день торгов</div>
                 <div class="col2"><?php
-                if($get_com->ipo->price_last_day){
-                	echo $get_com->ipo->price_last_day.' $';
+                if($get_com->ipo->first_day_profit_percent){
+                	echo $get_com->ipo->first_day_profit_percent.' %';
                 }else{
                 	echo ' - ';
                 }
                  ?></div>
               </div><!--end card-info__row -->
               <div class="card-info__row">
-                <div class="col1">Доходность по итогам Lock up периодна</div>
+                <div class="col1">Доходность по итогам<br>Lock up периодна</div>
                 <div class="col2"><?php
-                 if($get_com->ipo->price_lockup){
-                 	 echo $get_com->ipo->price_lockup.' %';
+                 if($get_com->ipo->lockup_day_profit_percent){
+                 	 echo $get_com->ipo->lockup_day_profit_percent.' %';
                  }else{
                  	echo ' - ';
                  }
@@ -214,28 +219,32 @@ get_header();
         <div class="card-grafic">
           <div class="card-chart__info__col">
             <div class="card-chart__info">
-              <div class="block">
+            <div class="block">
                 <div class="b-row">
-                  <div class="col1">Год основания</div>
-                  <div class="col2"><?php echo $get_com->year; ?></div>
+                  <div class="col1">Дата IPO</div>
+                  <div class="col2"><?php
+                   $ipo_date = explode('T', $get_com->ipo->ipo_date);
+                   $x = explode('-',$ipo_date[0]);
+                    echo $x[2].'-'.$x[1].'-'.$x[0];
+                  // echo $ipo_date[0]; ?></div>
                 </div>
                 <div class="b-row">
-                  <div class="col1">Головной офис</div>
-                  <div class="col2"><?php echo $get_com->address; ?></div>
+                  <div class="col1">Объем размещения</div>
+                  <div class="col2"><?php echo $numberr_format = number_format($number, 2, ' ', ' '); ?></div>
                 </div>
                 <div class="b-row">
-                  <div class="col1">Веб сайт</div>
-                  <div class="col2"><a href="<?php echo $get_com->website; ?>"><?php echo $get_com->ticker; ?></a></div>
-                </div>
-              </div><!--end block -->
-              <div class="block">
-                <div class="b-row">
-                  <div class="col1">Offer Shares (M)</div>
-                  <div class="col2"><?php echo $get_com->shares_number; ?></div>
-                </div>
-                <div class="b-row">
-                  <div class="col1">Deal Size ($M)</div>
+                  <div class="col1">Размер сделки ($M)</div>
                   <div class="col2"><?php echo $get_com->deal_size; ?></div>
+                </div>
+                <div class="b-row">
+                  <div class="col1">Диапазон цены</div>
+                  <div class="col2"><?php echo $get_com->offering_range_min; ?>-<?php echo $get_com->offering_range_max; ?> $</div>
+                </div>
+                <div class="b-row">
+                  <div class="col1">Цена IPO ($)</div>
+                  <div class="col2"><?php
+                  echo $get_com->ipo->price;
+                   ?></div>
                 </div>
                 <div class="b-row">
                   <div class="col1">Lock-up Date</div>
@@ -247,29 +256,26 @@ get_header();
 
                    //echo $exdate[0]; ?></div>
                 </div>
-                <div class="b-row">
-                  <div class="col1">IPO Price ($)</div>
-                  <div class="col2"><?php
-                  echo $get_com->ipo->price;
-                   ?></div>
-                </div>
-                <div class="b-row">
-                  <div class="col1">IPO Date</div>
-                  <div class="col2"><?php
-                   $ipo_date = explode('T', $get_com->ipo->ipo_date);
-                   $x = explode('-',$ipo_date[0]);
-                    echo $x[2].'-'.$x[1].'-'.$x[0];
-                  // echo $ipo_date[0]; ?></div>
-                </div>
-                <div class="b-row">
-                  <div class="col1">Price range</div>
-                  <div class="col2">$<?php echo $get_com->offering_range_min; ?>-$<?php echo $get_com->offering_range_max; ?></div>
-                </div>
               </div><!--end block -->
               <div class="block">
+                <div class="b-row">
+                  <div class="col1">Год основания</div>
+                  <div class="col2"><?php echo $get_com->year; ?></div>
+                </div>
+                <div class="b-row">
+                  <div class="col1">Головной офис</div>
+                  <div class="col2"><?php echo $get_com->address; ?></div>
+                </div>
+                <div class="b-row">
+                  <div class="col1">Веб сайт</div>
+                  <div class="col2"><a href="<?php echo $get_com->website; ?>" target="_blank"><?php echo $domain; ?></a></div>
+                </div>
+              </div><!--end block -->
+
+              <div class="block">
                 <div class="b-col">
-                  <div class="col1">Lawyers</div>
-                  <div class="col2">                    <?php
+                  <div class="col1">Юристы</div>
+                  <div class="col2"><?php
                         $lawyers_arr = explode(';', $get_com->lawyers );
                         foreach($lawyers_arr as $lawyer){
                             echo "<span>$lawyer</span>";
@@ -277,7 +283,7 @@ get_header();
                     ?></div>
                 </div>
                 <div class="b-col">
-                  <div class="col1">Auditor</div>
+                  <div class="col1">Аудитор</div>
                   <div class="col2">                    <?php
                         $auditors_arr = explode(';', $get_com->auditors );
                         foreach($auditors_arr as $auditor){
@@ -286,7 +292,7 @@ get_header();
                     ?></div>
                 </div>
                 <div class="b-row">
-                  <div class="col1">Underwriters</div>
+                  <div class="col1">Антерайтер</div>
                   <div class="col2"><?php echo $get_com->underwriter; ?></div>
                 </div>
               </div><!--end block -->
@@ -296,14 +302,14 @@ get_header();
             <div class="card-grafic__chart">
             	<?php
             	$id_p = get_the_ID();
-    $get_tikers = get_post_meta($id_p,'tiker',true);
+              $get_tikers = get_post_meta($id_p,'tiker',true);
 
-    $get_grafs = 'https://static-dev-ff4708e.s3.eu-north-1.amazonaws.com/charts/'.$get_tikers.'.json';
+              $get_grafs = 'https://static-dev-ff4708e.s3.eu-north-1.amazonaws.com/charts/'.$get_tikers.'.json';
 
 
-    $get_coms = curlhttp($get_grafs);
+              $get_coms = curlhttp($get_grafs);
 
-    	if(!$get_coms){
+    	        if(!$get_coms){
     		?>
     		       <div class="card-grafic__info">
           <div class="card-grafic__info__title">
@@ -331,7 +337,7 @@ get_header();
         ?>
         <div class="card-grafic__info">
           <div class="card-grafic__info__title">
-            <h2>Business Overview</h2>
+            <h2>Описание компании</h2>
             <div class="b-btn"><a href="<?php echo $get_com->prospectus_url; ?>" class="btn">IPO prospectus</a></div>
           </div><!--end card-grafic__info__title -->
           <div class="text"><?php echo $get_com->l10_n->en->description; ?>
@@ -362,8 +368,8 @@ get_header();
               ?>
               <div class="item">
                 <div class="news-item">
-                  <a href="<?php the_permalink(); ?>" class="news-item__label"><?php the_title(); ?></a>
-                  <div class="news-item__text"><?php echo get_the_excerpt(); ?></div>
+                  <a href="<?php the_permalink(); ?>" class="news-item__label"><?php gog_limit_title(120, '...'); ?></a>
+                  <div class="news-item__text"><?php the_excerpt(); ?></div>
 
                   <div class="news-item__bottom--mobile">
                     <div class="news-item__time">

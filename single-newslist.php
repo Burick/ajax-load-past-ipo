@@ -21,8 +21,6 @@ get_header();
 
           ?>
           <div class="news-full__info">
-            <!-- <div class="ava"><img src="img/ava.png" alt=""></div>
-            <div class="news-item__name">Ирина Каримова</div> -->
             <time class="news-item__date" datetime="<?php echo get_the_date( 'Y-m-d' ); ?>"><?php echo get_the_date( 'd F Y' ); ?></time>
             <div class="news-item__tags">
             <?php
@@ -32,7 +30,7 @@ get_header();
 
                   foreach($rows as $row)
                   {
-                    echo '<a href=" ' . $row['acf_adres_ssylki'] . ' "> ' . $row['acf_nazvanie_tikera'] . '</a>';
+                    echo '<a href="/company' . $row['acf_adres_ssylki'] . ' "> ' . $row['acf_nazvanie_tikera'] . '</a>';
                   }
                 }
               ?>
@@ -72,7 +70,7 @@ get_header();
 
         ?>
 
-        <h2 class="mobile-hidden">Новинки</h2>
+        <h2 class="mobile-hidden">Другие новости</h2>
         <div class="news-list mobile-hidden"> 
         <?php if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
 

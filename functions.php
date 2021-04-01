@@ -440,7 +440,31 @@ function obi_register_types(){
 
 }
 
+// Обрезаем длину заголовка до кол-ва знаков
+function gog_limit_title($count, $after) {
+	$title = get_the_title();
+	if (mb_strlen($title) > $count) $title = mb_substr($title,0,$count);
+	else $after = '';
+	echo $title . $after;
+}
 
+// Обрезаем краткое описание
+function do_excerpt($string, $word_limit) {
+	$words = explode(' ', $string, ($word_limit + 1));
+	if (count($words) > $word_limit)
+	array_pop($words);
+	echo implode(' ', $words).' ...';
+}
+
+function custom_excerpt_length($excerpt){
+	$characters = 250; // Количество символов
+	if (strlen($excerpt) > $characters) {
+		return substr($excerpt, 0, strpos($excerpt, ' ', $characters));
+	}
+	return $excerpt;
+}
+
+add_filter('the_excerpt', 'custom_excerpt_length');
 
 
 /**

@@ -53,7 +53,7 @@
           </div>
         </div>
         <div class="b-text">Никаких стартапов! Только акции глобальных корпораций с листингом на NASDAQ и NYSE </div>
-        <div class="link-lvl1"><a href="#" class="btn">Начать инвестировать</a></div>
+        <div class="link-lvl1"><a href="https://my.ipo.one" class="btn">Начать инвестировать</a></div>
       </div>
       <div class="main-video">
         <div class="b-img"><img src="<?php echo bloginfo('template_url'); ?>/assets/svg/lvl1-bg.svg" alt=""></div>
@@ -88,6 +88,17 @@
       </div>
     </div>
   </div><!--end lvl -->
+
+  <?php
+        global $wpdb;
+
+  $get_count = $wpdb->get_results("SELECT COUNT(*) FROM `budipo`");
+
+  $get_count = (array)$get_count[0];
+
+
+  if($get_ipo['COUNT(*)'] > 0){
+  ?>
   <div class="lvl3">
     <div class="wrapper">
       <h2>Ближайшие IPO</h2>
@@ -98,35 +109,64 @@
           <div class="ipos-scroll-cont">
 
           	<?php
-          	global $wpdb;
+    
 
-
-          	$get_ipo = $wpdb->get_results("SELECT * FROM `budipo` LIMIT 3");
+          	$get_ipo = $wpdb->get_results("SELECT * FROM `budipo` ORDER BY ipo_date DESC LIMIT 3");
          // 	echo '<pre>';
 
-          	   $category = array('-');
+            if ('ru' == $lang) {
 
-            $category[] = 'Consumer Staples';
+              $category = array('-');
 
-            $category[] = 'Health Care';
+              $category[] = 'Consumer Staples';
 
-            $category[] = 'Consumer Discretionary';
+              $category[] = 'Health Care';
 
-            $category[] = 'Technology';
+              $category[] = 'Consumer Discretionary';
 
-            $category[] = 'Materials';
+              $category[] = 'Technology';
 
-            $category[] = 'Real Estate';
+              $category[] = 'Materials';
 
-            $category[] = 'Financials';
+              $category[] = 'Real Estate';
 
-            $category[] = 'Industrials';
+              $category[] = 'Financials';
 
-            $category[] = 'Energy';
+              $category[] = 'Industrials';
 
-            $category[] = 'Utilities';
+              $category[] = 'Energy';
 
-            $category[] = 'Communication Services';
+              $category[] = 'Utilities';
+
+              $category[] = 'Communication Services';
+
+          } else {
+
+              $category = array('-');
+
+              $category[] = 'Товары массового потребления';
+
+              $category[] = 'Здравоохранение';
+
+              $category[] = 'Потребительский сектор';
+
+              $category[] = 'Высокие технологии';
+
+              $category[] = 'Сырьевой сектор';
+
+              $category[] = 'Недвижимость';
+
+              $category[] = 'Финансы';
+
+              $category[] = 'Промышленность';
+
+              $category[] = 'Энергетика';
+
+              $category[] = 'Инфраструктура';
+
+              $category[] = 'Communication Services';
+
+          }
           	
             $timer_data = [];
           	foreach ($get_ipo as $value) {
@@ -141,15 +181,14 @@
               <div class="block">
                 <div class="icon"><img src="https://static-dev-ff4708e.s3.eu-north-1.amazonaws.com/logos/<?php echo $value->ticker;  ?>_logo.jpg" alt=""></div>
                 <div class="name"><?php echo $value->company_name; ?></div>
-                <div class="title"><?php echo $value->stock; ?>:<a href="<?php echo get_post_permalink( $selectProducts[0]->post_id ); ?>"><?php echo $value->ticker; ?></a></div>
+                <div class="title"><?php echo $value->stock; ?> : <a href="<?php echo get_post_permalink( $selectProducts[0]->post_id ); ?>"><?php echo $value->ticker; ?></a></div>
                 <div class="text"><?php echo $value->lan_eng; ?></div>
                 <div class="props">
-                  <div class="p-row"><span>Deal size</span><strong>35.00 $</strong></div>
-                  <div class="p-row"><span>Диапазон цены</span><strong><?php echo $value->offering_range_min; ?>-<?php echo $value->offering_range_max; ?> $</strong></div>
+                <div class="p-row"><span>Размер сделки</span><strong>35.00 $</strong></div>
+                <div class="p-row"><span>Диапазон цены</span><strong><?php echo $value->offering_range_min; ?>-<?php echo $value->offering_range_max; ?> $</strong></div>
 
                   <?php
-                                    $ex_date = explode('T',$value->ipo_date);
-
+                    $ex_date = explode('T',$value->ipo_date);
                   ?>
                   <div class="p-row"><span>Планируемая дата IPO:</span><strong><?php
                   // echo $ex_date[0];
@@ -260,6 +299,33 @@
       <div class="bdq dq4"><div class="dqq t3"></div><div class="dqq t5"></div></div>
     </div>
   </div><!--end lvl -->
+
+<?php
+  }else{
+    ?>
+      <div class="lvl3 not-found">
+        <div class="wrapper">
+          <h2>Ближайшие IPO</h2>
+          <div class="desc">Еженедельно мы отбираем свыше <strong>25</strong> потенциально прибыльных <strong>IPO</strong>. Вы сами решаете, во что вкладывать свои деньги. Инвестируйте и получайте результат — всю бумажную работу мы берем на себя.</div>
+          <div class="desc-notfound">
+            <p class="blue">На данный момент нет запланированых IPO</p>
+            <p>Ожидается в ближайшее время, поэтому следите за обновлениями!</p>
+          </div>
+            <div class="bdq dq5">
+              <div class="dqq t6"></div>
+              <div class="dqq t4"></div>
+            </div>
+        </div>
+        <div class="lvl-bg">
+          <div class="bdq dq4"><div class="dqq t3"></div><div class="dqq t5"></div></div>
+        </div>
+      </div><!--end lvl -->
+    <?php
+  }
+?>  
+
+
+
   <div class="lvl4">
     <div class="wrapper">
       <h2>Оцените потенциальный доход</h2>
@@ -271,45 +337,75 @@
           <div class="dohod-scroll-cont">
 
 
-                            <?php
+          <?php
             global $wpdb;
 
 
-            $get_ipo = $wpdb->get_results("SELECT * FROM `pastipo` LIMIT 3");
-          //  echo '<pre>';
+            $get_ipo = $wpdb->get_results("SELECT * FROM `pastipo` ORDER BY ipo_date DESC LIMIT 3");
+            //  echo '<pre>';
 
-               $category = array('-');
+            if ('ru' == $lang) {
 
-            $category[] = 'Consumer Staples';
+              $category = array('-');
 
-            $category[] = 'Health Care';
+              $category[] = 'Consumer Staples';
 
-            $category[] = 'Consumer Discretionary';
+              $category[] = 'Health Care';
 
-            $category[] = 'Technology';
+              $category[] = 'Consumer Discretionary';
 
-            $category[] = 'Materials';
+              $category[] = 'Technology';
 
-            $category[] = 'Real Estate';
+              $category[] = 'Materials';
 
-            $category[] = 'Financials';
+              $category[] = 'Real Estate';
 
-            $category[] = 'Industrials';
+              $category[] = 'Financials';
 
-            $category[] = 'Energy';
+              $category[] = 'Industrials';
 
-            $category[] = 'Utilities';
+              $category[] = 'Energy';
 
-            $category[] = 'Communication Services';
+              $category[] = 'Utilities';
+
+              $category[] = 'Communication Services';
+
+           } else {
+
+              $category = array('-');
+
+              $category[] = 'Товары массового потребления';
+
+              $category[] = 'Здравоохранение';
+
+              $category[] = 'Потребительский сектор';
+
+              $category[] = 'Высокие технологии';
+
+              $category[] = 'Сырьевой сектор';
+
+              $category[] = 'Недвижимость';
+
+              $category[] = 'Финансы';
+
+              $category[] = 'Промышленность';
+
+              $category[] = 'Энергетика';
+
+              $category[] = 'Инфраструктура';
+
+              $category[] = 'Communication Services';
+
+          }
             
             foreach ($get_ipo as $value) {
 
-             // print_r($value);
-
-
-
+              // print_r($value);
               //exit();
-              ?>
+              $skuCode = $value->ticker;
+              $selectProducts = $wpdb->get_results("SELECT * FROM `wp_postmeta` WHERE `meta_key` = 'tiker' AND `meta_value` = '$skuCode'");
+          ?>
+          
                 <div class="deal-item">
                   <div class="block">
                     <div class="img"><img src="https://static-dev-ff4708e.s3.eu-north-1.amazonaws.com/logos/<?php echo $value->ticker;  ?>_logo.jpg" alt=""></div>
@@ -317,7 +413,9 @@
                     <div class="bs-rows">
                       <div class="b-row">
                         <div class="col1">Цена первичного размещения</div>
-                        <div class="col2"><?php echo $value->price; ?> $</div>
+                        <div class="col2">
+                          <?php echo $value->price; ?> $
+                        </div>
                       </div>
                       <div class="b-row">
                         <div class="col1">Цена на дату окончания
@@ -577,7 +675,7 @@
         Мы работаем в европейской юрисдикции и принимаем заявки со всего мира <strong>24/7</strong>.<br>
         Наша цель: предоставить доступ к высококлассные сделкам <strong>IPO</strong> для широкого круга розничных клиентов, вне зависимости от их возраста, профессии, уровня дохода и гражданства.
       </div>
-      <div class="bottom-btn"><a href="#" class="btn">Начать зарабатывать</a></div>
+      <div class="bottom-btn"><a href="https://my.ipo.one" class="btn">Начать зарабатывать</a></div>
     </div>
     <div class="bdq dq8-1"></div>
   </div><!--end lvl -->
