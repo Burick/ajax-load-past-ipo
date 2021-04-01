@@ -26,22 +26,22 @@ $lang = 'eng';
                 </div>
                 <div class="ipos-filter">
                     <div class="ipos-filter__btns">
-                        <div class="drop-select">
+                        <div class="drop-select" id="sphere">
                             <div class="drop-select__value">Сфера(1)</div>
                             <span class="arr"><img
                                         src="<?php echo bloginfo('template_url'); ?>/assets/svg/arr-select2.svg" alt=""></span>
                             <div class="drop-select__list">
                                 <ul>
-                                    <li><label class="checkbox" for="dd1"><input id="dd1" type="checkbox"><span>Technology</span></label>
+                                    <li><label class="checkbox" for="sphere-1"><input id="sphere-1" name="sphere-1" type="checkbox" value="1" ><span>Technology</span></label>
                                     </li>
-                                    <li><label class="checkbox" for="dd2"><input id="dd2" type="checkbox"><span>Financials</span>
+                                    <li><label class="checkbox" for="sphere-2"><input id="sphere-2" name="sphere-2" type="checkbox" value="2"><span>Financials</span>
                                     </li>
-                                    <li><label class="checkbox" for="dd3"><input id="dd3" type="checkbox"><span>Consumer Discretionary</span>
+                                    <li><label class="checkbox" for="sphere-3"><input id="sphere-3" name="sphere-3" type="checkbox" value="3"><span>Consumer Discretionary</span>
                                     </li>
                                 </ul>
                             </div>
                         </div><!--end drop-select -->
-                        <div class="drop-select">
+                        <div class="drop-select" id="date">
                             <div class="drop-select__value"><input id="" type="hidden"><span
                                         id="open-datepicker">Дата</span></div>
                             <span class="arr"><img
@@ -50,17 +50,17 @@ $lang = 'eng';
                                 <div id="datepicker"></div>
                             </div>
                         </div><!--end drop-select -->
-                        <div class="drop-select">
+                        <div class="drop-select" id="rating">
                             <div class="drop-select__value">Рейтинг</div>
                             <span class="arr"><img
                                         src="<?php echo bloginfo('template_url'); ?>/assets/svg/arr-select2.svg" alt=""></span>
                             <div class="drop-select__list">
                                 <ul>
-                                    <li><label class="checkbox" for="dd1"><input id="dd1" type="checkbox"><span>Technology</span></label>
+                                    <li><label class="checkbox" for="rating-1"><input name="rating-1" id="rating-1" type="checkbox" value="1"><span>Одна звезда</span></label>
                                     </li>
-                                    <li><label class="checkbox" for="dd2"><input id="dd2" type="checkbox"><span>Financials</span>
+                                    <li><label class="checkbox" for="rating-2"><input name="rating-2" id="rating-2" type="checkbox" value="2"><span>Две звезды</span>
                                     </li>
-                                    <li><label class="checkbox" for="dd3"><input id="dd3" type="checkbox"><span>Consumer Discretionary</span>
+                                    <li><label class="checkbox" for="rating-3"><input name="rating-3" id="rating-3" type="checkbox" value="3"><span>Три звезды</span>
                                     </li>
                                 </ul>
                             </div>
@@ -110,7 +110,7 @@ $lang = 'eng';
                         $query = "SELECT * FROM pastipo";
                         //$get_ipo = $wpdb->get_results($query);
                         $total_record = count($wpdb->get_results($query, ARRAY_A));
-                        $query .= ' ORDER BY id DESC LIMIT ' . $offset . ', ' . $post_per_page;
+                        $query .= ' ORDER BY ipo_date DESC LIMIT ' . $offset . ', ' . $post_per_page;
                         $get_ipo = $wpdb->get_results($wpdb->prepare($query));
                         ?>
                         <script>
@@ -242,7 +242,7 @@ $lang = 'eng';
 
 
 <?php
-
+/*
 
 $args = [
     'base' => '/' . $post->post_name . '/%_%',
@@ -265,7 +265,7 @@ $args = [
 ];
 
 echo paginate_links($args);
-
+*/
 ?>
 
 <?php
