@@ -88,6 +88,17 @@
       </div>
     </div>
   </div><!--end lvl -->
+
+  <?php
+        global $wpdb;
+
+  $get_count = $wpdb->get_results("SELECT COUNT(*) FROM `budipo`");
+
+  $get_count = (array)$get_count[0];
+
+
+  if($get_ipo['COUNT(*)'] > 0){
+  ?>
   <div class="lvl3">
     <div class="wrapper">
       <h2>Ближайшие IPO</h2>
@@ -98,8 +109,7 @@
           <div class="ipos-scroll-cont">
 
           	<?php
-          	global $wpdb;
-
+    
 
           	$get_ipo = $wpdb->get_results("SELECT * FROM `budipo` ORDER BY ipo_date DESC LIMIT 3");
          // 	echo '<pre>';
@@ -289,6 +299,33 @@
       <div class="bdq dq4"><div class="dqq t3"></div><div class="dqq t5"></div></div>
     </div>
   </div><!--end lvl -->
+
+<?php
+  }else{
+    ?>
+      <div class="lvl3 not-found">
+        <div class="wrapper">
+          <h2>Ближайшие IPO</h2>
+          <div class="desc">Еженедельно мы отбираем свыше <strong>25</strong> потенциально прибыльных <strong>IPO</strong>. Вы сами решаете, во что вкладывать свои деньги. Инвестируйте и получайте результат — всю бумажную работу мы берем на себя.</div>
+          <div class="desc-notfound">
+            <p class="blue">На данный момент нет запланированых IPO</p>
+            <p>Ожидается в ближайшее время, поэтому следите за обновлениями!</p>
+          </div>
+            <div class="bdq dq5">
+              <div class="dqq t6"></div>
+              <div class="dqq t4"></div>
+            </div>
+        </div>
+        <div class="lvl-bg">
+          <div class="bdq dq4"><div class="dqq t3"></div><div class="dqq t5"></div></div>
+        </div>
+      </div><!--end lvl -->
+    <?php
+  }
+?>  
+
+
+
   <div class="lvl4">
     <div class="wrapper">
       <h2>Оцените потенциальный доход</h2>
@@ -376,7 +413,9 @@
                     <div class="bs-rows">
                       <div class="b-row">
                         <div class="col1">Цена первичного размещения</div>
-                        <div class="col2"><?php echo $value->price; ?> $</div>
+                        <div class="col2">
+                          <?php echo $value->price; ?> $
+                        </div>
                       </div>
                       <div class="b-row">
                         <div class="col1">Цена на дату окончания

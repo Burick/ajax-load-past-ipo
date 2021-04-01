@@ -579,5 +579,8 @@ $(function() {
     }
 });
 
+document.addEventListener( 'wpcf7mailsent', function( event ) {
+    $('#pop-thanks').modal();
+}, false );
 
 

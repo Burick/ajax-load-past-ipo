@@ -732,6 +732,33 @@ h2 {font-size: 36px;font-weight: 400;padding: 0 0 48px;margin: 0;font-family: 'O
 .lvl3 .lvl-bg {z-index: 0;}
 .lvl3 h2 {padding-bottom: 20px;}
 .lvl3 .desc {margin-bottom: 44px;}
+.lvl3.not-found{
+    padding: 60px 0 214px;
+}
+.lvl3 .desc-notfound {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 24px rgba(0, 13, 59, 0.1);
+    max-height: 208px;
+    height: 208px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    text-align: center;
+    flex-direction: column;
+}
+.lvl3 .desc-notfound p{
+    color: #000000;
+    opacity: 0.8;
+    font-size: 14px;
+    padding: 0;
+}
+.lvl3 .desc-notfound .blue{
+    color: #1357DD;
+    opacity: 0.8;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
 .lvl3 .bs-ipos {display: flex;margin: 0 -10px; position: relative;z-index: 1;}
 .lvl3 .ipos-scroll {display: flex;width: 100%;}
 .lvl3 .ipos-scroll-cont {width: 100%; display: flex;}
@@ -1385,6 +1412,7 @@ body.inside {background: #f8f8f8}
 .popup .close {position: absolute;top: 20px;right: 20px; width: 14px;height: 14px; cursor: pointer;}
 .popup-wrapper {box-shadow: 0px 4px 24px rgba(0, 13, 59, 0.1);max-width: 900px;width: 100%; position: relative;background: #fff;padding: 70px 150px 60px;}
 .popup-cont {position: relative;z-index: 1;}
+.popup-cont form .wpcf7-response-output{width: 100%;margin: 0;}
 .popup-title {text-align: center;font-family: 'Oswald', sans-serif; font-size: 36px;padding-bottom: 25px;}
 .popup-wrapper .desc {font-size: 18px;text-align: center;padding-bottom: 60px;}
 .popup-wrapper .text-desc {max-width: 390px;margin:0 auto;padding: 0 0 25px; font-size: 18px;}
